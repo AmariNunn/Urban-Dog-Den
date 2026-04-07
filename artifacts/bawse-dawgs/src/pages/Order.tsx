@@ -2,11 +2,22 @@ import { PageTransition } from "@/components/layout/PageTransition";
 import { useCart } from "@/context/CartContext";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { Minus, Plus, Trash2, ArrowRight, ShoppingBag, CheckCircle2 } from "lucide-react";
+import { Minus, Plus, Trash2, ArrowRight, ShoppingBag, CheckCircle2, Crown } from "lucide-react";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+
+const STARS = Array.from({ length: 35 }, (_, i) => ({
+  id: i,
+  x: ((i * 137.508) % 100),
+  y: ((i * 97.33) % 100),
+  size: i % 5 === 0 ? 2 : 1.2,
+  opacity: 0.05 + (i % 6) * 0.025,
+  color: i % 4 === 0 ? "#c9a227" : i % 4 === 1 ? "#cc0000" : "#f5c542",
+}));
+
+const BG: React.CSSProperties = { background: "#07060a" };
 
 export default function Order() {
   const { items, updateQuantity, updateInstructions, removeItem, subtotal, clearCart } = useCart();
@@ -15,47 +26,55 @@ export default function Order() {
 
   const handlePlaceOrder = () => {
     setIsPlaced(true);
-    setTimeout(() => {
-      clearCart();
-    }, 500);
+    setTimeout(() => clearCart(), 500);
   };
+
+  const Overlay = () => (
+    <>
+      <svg className="fixed inset-0 w-full h-full pointer-events-none opacity-[0.07] z-0" aria-hidden>
+        <filter id="grain-order">
+          <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="4" stitchTiles="stitch"/>
+          <feColorMatrix type="saturate" values="0"/>
+        </filter>
+        <rect width="100%" height="100%" filter="url(#grain-order)"/>
+      </svg>
+      <div className="fixed inset-0 pointer-events-none z-0">
+        {STARS.map(({ id, x, y, size, opacity, color }) => (
+          <div key={id} className="absolute rounded-full"
+            style={{ left: `${x}%`, top: `${y}%`, width: size, height: size, background: color, opacity }} />
+        ))}
+      </div>
+      <div className="fixed inset-0 pointer-events-none z-0" style={{
+        background: "radial-gradient(ellipse 55% 40% at 50% 0%, rgba(201,162,39,0.09) 0%, transparent 65%)",
+      }} />
+    </>
+  );
 
   if (isPlaced) {
     return (
       <PageTransition>
-        <div className="max-w-3xl mx-auto px-4 py-24 min-h-[70vh] flex flex-col items-center justify-center text-center">
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ type: "spring", bounce: 0.5 }}
-          >
-            <CheckCircle2 className="w-32 h-32 text-primary mb-8 mx-auto" />
-          </motion.div>
-          <motion.h1 
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="font-display text-5xl md:text-7xl mb-4 uppercase tracking-wider"
-          >
-            ORDER SECURED
-          </motion.h1>
-          <motion.p 
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="text-xl font-heading text-muted-foreground uppercase tracking-widest mb-12"
-          >
-            Your {orderType} is locked in. Boss level execution incoming.
-          </motion.p>
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.4 }}
-          >
-            <Link href="/" data-testid="button-back-to-home" className="shimmer-btn px-8 py-4 rounded-sm flex items-center justify-center gap-2" onClick={() => setIsPlaced(false)}>
-              Back to Home <ArrowRight className="w-5 h-5" />
-            </Link>
-          </motion.div>
+        <div className="min-h-screen relative flex flex-col items-center justify-center text-center px-4 py-20" style={BG}>
+          <Overlay />
+          <div className="relative z-10">
+            <motion.div initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: "spring", bounce: 0.5 }}>
+              <CheckCircle2 className="w-24 h-24 text-primary mb-6 mx-auto" style={{ filter: "drop-shadow(0 0 20px rgba(201,162,39,0.4))" }} />
+            </motion.div>
+            <motion.h1 initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }}
+              className="font-display text-5xl md:text-7xl mb-3 uppercase tracking-tight" style={{ textShadow: "0 0 40px rgba(201,162,39,0.25)" }}>
+              ORDER SECURED
+            </motion.h1>
+            <motion.p initial={{ y: 15, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.3 }}
+              className="text-base font-heading text-white/30 uppercase tracking-widest mb-10">
+              Your {orderType} is locked in. Boss-level execution incoming.
+            </motion.p>
+            <motion.div initial={{ y: 15, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.4 }}>
+              <Link href="/" data-testid="button-back-to-home"
+                className="shimmer-btn px-10 py-4 rounded-sm flex items-center justify-center gap-2"
+                onClick={() => setIsPlaced(false)}>
+                Back to Home <ArrowRight className="w-4 h-4" />
+              </Link>
+            </motion.div>
+          </div>
         </div>
       </PageTransition>
     );
@@ -64,15 +83,21 @@ export default function Order() {
   if (items.length === 0) {
     return (
       <PageTransition>
-        <div className="max-w-3xl mx-auto px-4 py-24 min-h-[70vh] flex flex-col items-center justify-center text-center">
-          <ShoppingBag className="w-24 h-24 text-muted mb-8" />
-          <h1 className="font-display text-5xl md:text-7xl mb-4 uppercase tracking-wider text-white">Cart is Empty</h1>
-          <p className="text-xl font-heading text-muted-foreground uppercase tracking-widest mb-12">
-            Time to secure the bag.
-          </p>
-          <Link href="/menu" data-testid="button-view-menu-empty-cart" className="shimmer-btn px-12 py-4 rounded-sm uppercase tracking-widest font-bold flex items-center justify-center gap-3">
-            View Menu <ArrowRight className="w-5 h-5" />
-          </Link>
+        <div className="min-h-screen relative flex flex-col items-center justify-center text-center px-4 py-20" style={BG}>
+          <Overlay />
+          <div className="relative z-10">
+            <ShoppingBag className="w-16 h-16 text-white/10 mb-6 mx-auto" />
+            <h1 className="font-display text-5xl md:text-7xl mb-3 uppercase tracking-tight text-white">
+              Cart is <span className="text-primary">Empty</span>
+            </h1>
+            <p className="text-sm font-heading text-white/25 uppercase tracking-widest mb-10">
+              Time to secure the bag.
+            </p>
+            <Link href="/menu" data-testid="button-view-menu-empty-cart"
+              className="shimmer-btn px-10 py-4 rounded-sm uppercase tracking-widest font-bold flex items-center justify-center gap-3">
+              View Menu <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
         </div>
       </PageTransition>
     );
@@ -84,120 +109,140 @@ export default function Order() {
 
   return (
     <PageTransition>
-      <div className="max-w-6xl mx-auto px-4 py-12 min-h-screen">
-        <h1 className="font-display text-6xl text-primary tracking-tighter mb-12 border-b-2 border-primary/20 pb-4">YOUR ORDER</h1>
+      <div className="min-h-screen relative" style={BG}>
+        <Overlay />
 
-        <div className="grid lg:grid-cols-3 gap-12">
-          {/* Cart Items */}
-          <div className="lg:col-span-2 space-y-6">
-            <AnimatePresence>
-              {items.map((item) => (
-                <motion.div 
-                  key={item.id}
-                  layout
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20, scale: 0.95 }}
-                  className="bg-[#111] border border-white/5 p-6 flex flex-col sm:flex-row gap-6 relative group"
-                >
-                  <div className="flex-1">
-                    <div className="flex justify-between items-start mb-2">
-                      <h3 className="font-display text-2xl tracking-wide uppercase">{item.name}</h3>
-                      <span className="font-heading text-xl text-primary">${(item.price * item.quantity).toFixed(2)}</span>
-                    </div>
-                    
-                    <div className="mt-4">
-                      <Label className="text-xs text-muted-foreground uppercase tracking-widest mb-2 block">Special Instructions</Label>
-                      <Input 
-                        value={item.instructions}
-                        onChange={(e) => updateInstructions(item.id, e.target.value)}
-                        placeholder="No onions, extra sauce, etc."
-                        className="bg-black/50 border-white/10 focus:border-primary rounded-none font-sans"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="flex sm:flex-col items-center justify-between sm:justify-center gap-4 border-t sm:border-t-0 sm:border-l border-white/10 pt-4 sm:pt-0 sm:pl-6 min-w-[120px]">
-                    <div className="flex items-center gap-4 bg-black p-1">
-                      <button 
-                        onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                        data-testid={`button-decrease-qty-${item.id}`}
-                        className="w-8 h-8 flex items-center justify-center text-muted-foreground hover:text-white hover:bg-white/10 transition-colors"
-                      >
-                        <Minus className="w-4 h-4" />
-                      </button>
-                      <span className="font-heading text-xl w-4 text-center">{item.quantity}</span>
-                      <button 
-                        onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                        data-testid={`button-increase-qty-${item.id}`}
-                        className="w-8 h-8 flex items-center justify-center text-muted-foreground hover:text-white hover:bg-white/10 transition-colors"
-                      >
-                        <Plus className="w-4 h-4" />
-                      </button>
-                    </div>
-                    
-                    <button 
-                      onClick={() => removeItem(item.id)}
-                      data-testid={`button-remove-${item.id}`}
-                      className="text-muted-foreground hover:text-destructive transition-colors text-sm uppercase tracking-widest flex items-center gap-1 font-heading"
-                    >
-                      <Trash2 className="w-4 h-4" /> Remove
-                    </button>
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
+        <div className="relative z-10 max-w-6xl mx-auto px-4 pt-10 pb-16">
+          {/* Header */}
+          <div className="flex items-center gap-3 mb-8 pb-4 border-b border-white/[0.07]">
+            <Crown className="w-5 h-5 text-primary" />
+            <h1 className="font-display text-4xl md:text-5xl text-white tracking-tighter">
+              YOUR <span className="text-primary">ORDER</span>
+            </h1>
+            <span className="ml-auto font-heading text-xs tracking-widest text-white/20 uppercase">
+              {items.length} item{items.length !== 1 ? "s" : ""}
+            </span>
           </div>
 
-          {/* Checkout Summary */}
-          <div className="lg:col-span-1">
-            <div className="bg-[#111] border border-white/5 p-6 sticky top-28">
-              <h3 className="font-display text-2xl tracking-wide uppercase mb-6 pb-4 border-b border-white/10">Summary</h3>
-              
-              <div className="space-y-6 mb-8">
-                <div className="space-y-4">
-                  <Label className="text-sm text-muted-foreground uppercase tracking-widest">Order Type</Label>
-                  <RadioGroup value={orderType} onValueChange={setOrderType} className="grid grid-cols-2 gap-4">
-                    <div data-testid="radio-pickup" className={`border p-4 text-center cursor-pointer transition-colors ${orderType === 'pickup' ? 'border-primary text-primary bg-primary/5' : 'border-white/10 text-white hover:border-white/30'}`} onClick={() => setOrderType('pickup')}>
-                      <RadioGroupItem value="pickup" id="pickup" className="sr-only" />
-                      <Label htmlFor="pickup" className="font-heading uppercase tracking-widest cursor-pointer text-base">Pickup</Label>
+          <div className="grid lg:grid-cols-3 gap-8">
+            {/* Cart Items */}
+            <div className="lg:col-span-2 space-y-3">
+              <AnimatePresence>
+                {items.map((item) => (
+                  <motion.div
+                    key={item.id}
+                    layout
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20, scale: 0.97 }}
+                    className="border border-white/[0.05] hover:border-primary/25 transition-all duration-300 group overflow-hidden"
+                    style={{ background: "rgba(255,255,255,0.02)" }}
+                  >
+                    <div className="p-5 flex flex-col sm:flex-row gap-5">
+                      <div className="flex-1">
+                        <div className="flex justify-between items-start mb-3">
+                          <h3 className="font-display text-xl tracking-wide uppercase text-white">{item.name}</h3>
+                          <span className="font-heading text-lg text-primary ml-4 flex-shrink-0">
+                            ${(item.price * item.quantity).toFixed(2)}
+                          </span>
+                        </div>
+                        <div>
+                          <Label className="text-[9px] text-white/20 uppercase tracking-widest mb-1.5 block">
+                            Special Instructions
+                          </Label>
+                          <Input
+                            value={item.instructions}
+                            onChange={(e) => updateInstructions(item.id, e.target.value)}
+                            placeholder="No onions, extra sauce, etc."
+                            className="bg-transparent border-white/[0.07] focus:border-primary/50 rounded-none font-sans text-sm text-white/60 placeholder:text-white/15 h-9"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="flex sm:flex-col items-center justify-between sm:justify-center gap-4 border-t sm:border-t-0 sm:border-l border-white/[0.06] pt-3 sm:pt-0 sm:pl-5 min-w-[100px]">
+                        <div className="flex items-center gap-3 border border-white/[0.07]">
+                          <button onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                            data-testid={`button-decrease-qty-${item.id}`}
+                            className="w-8 h-8 flex items-center justify-center text-white/30 hover:text-white hover:bg-white/5 transition-colors">
+                            <Minus className="w-3.5 h-3.5" />
+                          </button>
+                          <span className="font-heading text-base w-4 text-center text-white">{item.quantity}</span>
+                          <button onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                            data-testid={`button-increase-qty-${item.id}`}
+                            className="w-8 h-8 flex items-center justify-center text-white/30 hover:text-white hover:bg-white/5 transition-colors">
+                            <Plus className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                        <button onClick={() => removeItem(item.id)}
+                          data-testid={`button-remove-${item.id}`}
+                          className="text-white/20 hover:text-secondary transition-colors text-[9px] uppercase tracking-widest flex items-center gap-1 font-heading">
+                          <Trash2 className="w-3.5 h-3.5" /> Remove
+                        </button>
+                      </div>
                     </div>
-                    <div data-testid="radio-delivery" className={`border p-4 text-center cursor-pointer transition-colors ${orderType === 'delivery' ? 'border-primary text-primary bg-primary/5' : 'border-white/10 text-white hover:border-white/30'}`} onClick={() => setOrderType('delivery')}>
-                      <RadioGroupItem value="delivery" id="delivery" className="sr-only" />
-                      <Label htmlFor="delivery" className="font-heading uppercase tracking-widest cursor-pointer text-base">Delivery</Label>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </div>
+
+            {/* Checkout Summary */}
+            <div className="lg:col-span-1">
+              <div className="border border-white/[0.06] p-6 sticky top-24" style={{ background: "rgba(255,255,255,0.025)" }}>
+                <h3 className="font-display text-2xl tracking-wide uppercase mb-5 pb-4 border-b border-white/[0.07] text-white">
+                  Summary
+                </h3>
+
+                <div className="space-y-5 mb-6">
+                  <div>
+                    <Label className="text-[9px] text-white/25 uppercase tracking-widest mb-3 block">Order Type</Label>
+                    <RadioGroup value={orderType} onValueChange={setOrderType} className="grid grid-cols-2 gap-2">
+                      {["pickup", "delivery"].map((type) => (
+                        <div key={type}
+                          data-testid={`radio-${type}`}
+                          className={`border p-3 text-center cursor-pointer transition-all duration-200 ${orderType === type ? "border-primary text-primary bg-primary/5" : "border-white/[0.07] text-white/30 hover:border-white/20"}`}
+                          onClick={() => setOrderType(type)}>
+                          <RadioGroupItem value={type} id={type} className="sr-only" />
+                          <Label htmlFor={type} className="font-heading uppercase tracking-widest cursor-pointer text-xs">
+                            {type.charAt(0).toUpperCase() + type.slice(1)}
+                          </Label>
+                        </div>
+                      ))}
+                    </RadioGroup>
+                  </div>
+
+                  <div className="space-y-2 font-heading text-xs tracking-widest border-t border-white/[0.06] pt-4">
+                    <div className="flex justify-between text-white/25 uppercase">
+                      <span>Subtotal</span><span>${subtotal.toFixed(2)}</span>
                     </div>
-                  </RadioGroup>
+                    <div className="flex justify-between text-white/25 uppercase">
+                      <span>Tax</span><span>${tax.toFixed(2)}</span>
+                    </div>
+                    {orderType === "delivery" && (
+                      <div className="flex justify-between text-white/25 uppercase">
+                        <span>Delivery</span><span>${deliveryFee.toFixed(2)}</span>
+                      </div>
+                    )}
+                    <div className="flex justify-between text-white pt-3 border-t border-white/[0.06] font-heading text-base">
+                      <span>Total</span>
+                      <span className="text-primary" style={{ textShadow: "0 0 12px rgba(201,162,39,0.3)" }}>
+                        ${total.toFixed(2)}
+                      </span>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="space-y-3 font-heading tracking-widest border-t border-white/10 pt-6">
-                  <div className="flex justify-between text-muted-foreground">
-                    <span>Subtotal</span>
-                    <span>${subtotal.toFixed(2)}</span>
-                  </div>
-                  <div className="flex justify-between text-muted-foreground">
-                    <span>Tax</span>
-                    <span>${tax.toFixed(2)}</span>
-                  </div>
-                  {orderType === "delivery" && (
-                    <div className="flex justify-between text-muted-foreground">
-                      <span>Delivery Fee</span>
-                      <span>${deliveryFee.toFixed(2)}</span>
-                    </div>
-                  )}
-                  <div className="flex justify-between text-xl text-white pt-4 border-t border-white/10">
-                    <span>Total</span>
-                    <span className="text-primary">${total.toFixed(2)}</span>
-                  </div>
-                </div>
+                <button
+                  onClick={handlePlaceOrder}
+                  data-testid="button-place-order"
+                  className="w-full shimmer-btn py-4 uppercase tracking-widest font-bold"
+                >
+                  Place Order
+                </button>
+
+                <p className="text-center text-[9px] text-white/15 font-heading tracking-widest uppercase mt-4">
+                  Boss-level execution guaranteed
+                </p>
               </div>
-
-              <button 
-                onClick={handlePlaceOrder}
-                data-testid="button-place-order"
-                className="w-full shimmer-btn py-4 uppercase tracking-widest font-bold"
-              >
-                Place Order
-              </button>
             </div>
           </div>
         </div>
