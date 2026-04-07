@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Bawse Dawgs"
+version = "1.0.0"
+id = "artifacts/bawse-dawgs"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20383
+
+[services.development]
+run = "pnpm --filter @workspace/bawse-dawgs run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/bawse-dawgs", "run", "build" ]
+publicDir = "artifacts/bawse-dawgs/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20383"
+BASE_PATH = "/"
