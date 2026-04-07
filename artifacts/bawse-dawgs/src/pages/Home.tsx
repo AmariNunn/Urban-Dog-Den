@@ -1,125 +1,359 @@
 import { PageTransition } from "@/components/layout/PageTransition";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { ArrowRight, Flame } from "lucide-react";
+import { ArrowRight, Flame, Crown, Star } from "lucide-react";
+import { useRef } from "react";
+
+const STAR_POSITIONS = Array.from({ length: 60 }, (_, i) => ({
+  id: i,
+  x: ((i * 137.508) % 100),
+  y: ((i * 97.33) % 100),
+  size: i % 5 === 0 ? 2.5 : i % 3 === 0 ? 1.8 : 1.2,
+  opacity: 0.08 + (i % 7) * 0.04,
+}));
 
 export default function Home() {
+  const heroRef = useRef<HTMLDivElement>(null);
+
   return (
     <PageTransition>
-      {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-black text-center px-4">
-        {/* Animated Background */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-black z-10" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/20 via-black to-black opacity-50" />
-          {/* Particles */}
-          {[...Array(20)].map((_, i) => (
+      {/* ── HERO ── */}
+      <section
+        ref={heroRef}
+        className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden text-center px-4"
+        style={{ background: "#07060a" }}
+      >
+        {/* Grain overlay */}
+        <svg
+          className="absolute inset-0 w-full h-full pointer-events-none z-0"
+          style={{ opacity: 0.09 }}
+          aria-hidden
+        >
+          <filter id="grain">
+            <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="4" stitchTiles="stitch" />
+            <feColorMatrix type="saturate" values="0" />
+          </filter>
+          <rect width="100%" height="100%" filter="url(#grain)" />
+        </svg>
+
+        {/* Star dots — deterministic positions */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          {STAR_POSITIONS.map(({ id, x, y, size, opacity }) => (
             <div
-              key={i}
-              className="absolute w-1 h-1 bg-primary rounded-full animate-spark"
+              key={id}
+              className="absolute rounded-full"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${2 + Math.random() * 2}s`
+                left: `${x}%`,
+                top: `${y}%`,
+                width: size,
+                height: size,
+                background: id % 4 === 0 ? "#c9a227" : id % 4 === 1 ? "#cc0000" : "#f5c542",
+                opacity,
               }}
             />
           ))}
         </div>
 
-        <div className="relative z-10 flex flex-col items-center max-w-4xl mx-auto">
-          <motion.img 
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            src={import.meta.env.BASE_URL + "bawse-dawgs-logo.png"} 
-            alt="Bawse Dawgs Logo" 
-            className="w-64 md:w-96 mb-8 drop-shadow-[0_0_30px_rgba(212,160,23,0.3)]"
+        {/* Radial gradients — gold center bloom + red corner accents */}
+        <div
+          className="absolute inset-0 z-0 pointer-events-none"
+          style={{
+            background: [
+              "radial-gradient(ellipse 70% 55% at 50% 40%, rgba(201,162,39,0.13) 0%, transparent 70%)",
+              "radial-gradient(ellipse 40% 30% at 15% 80%, rgba(204,0,0,0.10) 0%, transparent 60%)",
+              "radial-gradient(ellipse 35% 25% at 85% 15%, rgba(204,0,0,0.08) 0%, transparent 60%)",
+              "radial-gradient(ellipse 60% 40% at 50% 100%, rgba(139,90,10,0.12) 0%, transparent 70%)",
+            ].join(", "),
+          }}
+        />
+
+        {/* Vignette */}
+        <div
+          className="absolute inset-0 z-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 100% 100% at 50% 50%, transparent 40%, rgba(7,6,10,0.85) 100%)",
+          }}
+        />
+
+        {/* Animated gold sparks */}
+        {[...Array(18)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full animate-spark pointer-events-none z-0"
+            style={{
+              width: i % 3 === 0 ? 2 : 1,
+              height: i % 3 === 0 ? 2 : 1,
+              background: i % 2 === 0 ? "#c9a227" : "#cc0000",
+              left: `${((i * 53.7) % 100)}%`,
+              top: `${((i * 79.13) % 100)}%`,
+              animationDelay: `${(i * 0.4) % 3}s`,
+              animationDuration: `${2.5 + (i % 3) * 0.7}s`,
+              opacity: 0.6,
+            }}
           />
-          
-          <motion.h1 
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="font-display text-6xl md:text-8xl lg:text-9xl text-white tracking-tighter leading-none mb-6"
+        ))}
+
+        {/* ── Content ── */}
+        <div className="relative z-10 flex flex-col items-center max-w-5xl mx-auto">
+          {/* Small crown eyebrow */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex items-center gap-3 mb-6"
           >
-            STREET DAWGS <br/>
-            <span className="text-primary">DONE DIFFERENT</span>
+            <div className="h-px w-16 bg-gradient-to-r from-transparent to-primary/60" />
+            <Crown className="w-5 h-5 text-primary" />
+            <span className="font-heading text-xs tracking-[0.4em] text-primary/80 uppercase">
+              Street Dawgs Done Different
+            </span>
+            <Crown className="w-5 h-5 text-primary" />
+            <div className="h-px w-16 bg-gradient-to-l from-transparent to-primary/60" />
+          </motion.div>
+
+          {/* Main headline */}
+          <motion.h1
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.15, duration: 0.7 }}
+            className="font-display text-7xl md:text-9xl lg:text-[11rem] text-white tracking-tighter leading-[0.88] mb-6"
+          >
+            STREET
+            <br />
+            <span
+              className="text-primary"
+              style={{ textShadow: "0 0 60px rgba(201,162,39,0.35)" }}
+            >
+              DAWGS
+            </span>
+            <br />
+            <span className="text-secondary" style={{ fontSize: "0.6em" }}>
+              DONE DIFFERENT
+            </span>
           </motion.h1>
-          
-          <motion.p 
+
+          {/* Sub-headline */}
+          <motion.p
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-            className="text-xl md:text-3xl text-gray-300 font-heading font-light tracking-wide mb-12 uppercase"
+            transition={{ delay: 0.35, duration: 0.6 }}
+            className="text-lg md:text-2xl font-heading text-white/50 tracking-[0.25em] uppercase mb-4"
           >
-            Just a Good Ol' Dawg. Boss-level execution.
+            Just a Good Ol' Dawg.
           </motion.p>
-          
-          <motion.div 
+
+          {/* Editorial pull-quote */}
+          <motion.p
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.7, duration: 0.6 }}
-            className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto"
+            transition={{ delay: 0.45, duration: 0.6 }}
+            className="max-w-2xl text-base md:text-lg text-white/35 font-sans leading-relaxed tracking-wide mb-10"
           >
-            <Link href="/order" data-testid="button-order-now" className="shimmer-btn px-12 py-5 rounded-sm uppercase tracking-widest font-bold flex items-center justify-center gap-3">
+            Blue-collar roots. Boss-level execution. Every single dawg built from scratch
+            with 100% beef, real toppings, and zero apologies. This is premium street
+            food — crafted for those who know the difference between good and legendary.
+          </motion.p>
+
+          {/* CTA buttons */}
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.6 }}
+            className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto mb-16"
+          >
+            <Link
+              href="/order"
+              data-testid="button-order-now"
+              className="shimmer-btn px-12 py-5 rounded-sm uppercase tracking-widest font-bold flex items-center justify-center gap-3"
+            >
               Order Now <ArrowRight className="w-5 h-5" />
             </Link>
-            <Link href="/menu" data-testid="button-view-menu" className="shimmer-btn-red px-12 py-5 rounded-sm uppercase tracking-widest font-bold flex items-center justify-center gap-3">
+            <Link
+              href="/menu"
+              data-testid="button-view-menu"
+              className="shimmer-btn-red px-12 py-5 rounded-sm uppercase tracking-widest font-bold flex items-center justify-center gap-3"
+            >
               View Menu
             </Link>
           </motion.div>
+
+          {/* Stat row */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.85, duration: 0.8 }}
+            className="flex items-center gap-10 md:gap-16 flex-wrap justify-center"
+          >
+            {[
+              { label: "100% Beef", sub: "No fillers. Ever." },
+              { label: "Bawse Sauce", sub: "Made in-house." },
+              { label: "Chef-Driven", sub: "Built to stand out." },
+            ].map((stat, i) => (
+              <div key={i} className="text-center">
+                <div
+                  className="font-display text-2xl md:text-3xl text-primary tracking-wide"
+                  style={{ textShadow: "0 0 20px rgba(201,162,39,0.3)" }}
+                >
+                  {stat.label}
+                </div>
+                <div className="text-xs text-white/30 font-heading tracking-widest uppercase mt-1">
+                  {stat.sub}
+                </div>
+              </div>
+            ))}
+          </motion.div>
         </div>
+
+        {/* Bottom fade */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-10"
+          style={{ background: "linear-gradient(to bottom, transparent, #07060a)" }}
+        />
       </section>
 
-      {/* Brand Pillars */}
-      <section className="py-24 bg-[#111] relative z-10 border-t border-primary/20">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-5xl md:text-7xl mb-4"><span className="text-primary">100% Beef.</span> No Fillers.</h2>
-            <p className="text-2xl font-heading text-muted-foreground uppercase tracking-widest">No Shortcuts. Just Flavor.</p>
+      {/* ── BRAND PILLARS ── */}
+      <section
+        className="py-28 relative z-10 border-t border-primary/10"
+        style={{ background: "#0a090f" }}
+      >
+        {/* Grain on this section too */}
+        <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.06]" aria-hidden>
+          <rect width="100%" height="100%" filter="url(#grain)" />
+        </svg>
+
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <div className="text-center mb-20">
+            <p className="font-heading text-xs tracking-[0.4em] text-primary/60 uppercase mb-4">
+              What We Stand For
+            </p>
+            <h2 className="font-display text-5xl md:text-7xl mb-5">
+              <span className="text-primary">100% Beef.</span>{" "}
+              <span className="text-white">No Fillers.</span>
+            </h2>
+            <p className="text-xl font-heading text-white/30 uppercase tracking-widest">
+              No Shortcuts. No Compromise. Just Flavor.
+            </p>
           </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
+
+          <div className="grid md:grid-cols-3 gap-6">
             {[
-              { title: "Gourmet Swagger", desc: "Premium ingredients built with street attitude. We don't do basic.", icon: Flame },
-              { title: "Street Certified", desc: "Southern-inspired flavors that hit hard and leave you wanting another round.", icon: ArrowRight },
-              { title: "Loud & Confident", desc: "We serve fast, we serve loud, and every dawg leaves the kitchen perfect.", icon: Flame }
+              {
+                icon: Flame,
+                title: "Gourmet Swagger",
+                tag: "Premium Craft",
+                desc: "We source real ingredients and build every dawg with intention. No shortcuts, no fillers — just premium flavor stacked the way it was meant to be eaten.",
+              },
+              {
+                icon: Crown,
+                title: "Street Certified",
+                tag: "Southern Soul",
+                desc: "Southern-inspired, street-certified. From Nashville heat to Carolina slaw — our flavor DNA runs deep. Every bite carries a story that hits different.",
+              },
+              {
+                icon: Star,
+                title: "Boss Execution",
+                tag: "Every. Single. Time.",
+                desc: "We serve fast, we serve loud, and every dawg leaves the kitchen perfect. No weak energy. No sloppy builds. The Bawse Rule is non-negotiable.",
+              },
             ].map((pillar, i) => (
-              <motion.div 
+              <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.2 }}
-                className="bg-[#1a1a1a] p-8 border border-white/5 hover:border-primary/50 transition-colors group"
+                transition={{ delay: i * 0.15 }}
+                className="relative p-8 border border-white/[0.06] hover:border-primary/40 transition-all duration-500 group overflow-hidden"
+                style={{ background: "rgba(255,255,255,0.02)" }}
               >
-                <pillar.icon className="w-12 h-12 text-secondary mb-6 group-hover:text-primary transition-colors" />
-                <h3 className="font-display text-3xl mb-4 tracking-wide">{pillar.title}</h3>
-                <p className="text-gray-400 font-sans leading-relaxed">{pillar.desc}</p>
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{
+                    background:
+                      "radial-gradient(ellipse 60% 60% at 50% 0%, rgba(201,162,39,0.07) 0%, transparent 70%)",
+                  }}
+                />
+                <div className="font-heading text-[10px] tracking-[0.4em] text-primary/50 uppercase mb-4">
+                  {pillar.tag}
+                </div>
+                <pillar.icon className="w-8 h-8 text-primary mb-5 group-hover:scale-110 transition-transform" />
+                <h3 className="font-display text-3xl mb-4 tracking-wide text-white">
+                  {pillar.title}
+                </h3>
+                <p className="text-white/35 font-sans leading-relaxed text-sm">{pillar.desc}</p>
               </motion.div>
             ))}
           </div>
+
+          {/* Story pull section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="mt-20 grid md:grid-cols-2 gap-12 items-center border-t border-white/[0.05] pt-20"
+          >
+            <div>
+              <p className="font-heading text-xs tracking-[0.4em] text-secondary/70 uppercase mb-4">
+                The Origin
+              </p>
+              <h3 className="font-display text-4xl md:text-5xl text-white mb-6 leading-tight">
+                From the Streets <br />
+                <span className="text-primary">to the Grill.</span>
+              </h3>
+              <p className="text-white/35 font-sans leading-relaxed mb-4">
+                Bawse Dawgs was born from a simple idea — that street food deserves the same respect
+                as any fine dining experience. Real craft. Real ingredients. Real attitude. No
+                pretension, no compromise.
+              </p>
+              <p className="text-white/35 font-sans leading-relaxed">
+                We built this brand for the 21–45 crowd that loves premium food but hates the
+                pretension that usually comes with it. Instagram-worthy, belly-filling, and built
+                to make you come back the very next day.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { num: "5", label: "Signature Dawgs", color: "text-primary" },
+                { num: "2", label: "Classic Builds", color: "text-white" },
+                { num: "4", label: "Loaded Fries", color: "text-secondary" },
+                { num: "$0", label: "Shortcuts Taken", color: "text-primary" },
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className="p-6 border border-white/[0.06] text-center"
+                  style={{ background: "rgba(255,255,255,0.015)" }}
+                >
+                  <div className={`font-display text-5xl ${item.color} mb-2`}>{item.num}</div>
+                  <div className="text-white/30 text-xs font-heading tracking-widest uppercase">
+                    {item.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Marquee Banner */}
-      <section className="py-8 bg-primary overflow-hidden flex whitespace-nowrap">
-        <div className="animate-marquee flex gap-8 items-center text-black font-display text-4xl tracking-widest uppercase">
-          {[...Array(10)].map((_, i) => (
+      {/* ── MARQUEE ── */}
+      <section className="py-6 bg-primary overflow-hidden flex whitespace-nowrap border-y border-primary/50">
+        <div className="animate-marquee flex gap-8 items-center text-black font-display text-3xl tracking-widest uppercase">
+          {[...Array(12)].map((_, i) => (
             <span key={i} className="flex items-center gap-8">
-              THE BAWSE RULE: EVERY DAWG PERFECT <Flame className="w-8 h-8" />
+              THE BAWSE RULE: EVERY DAWG PERFECT{" "}
+              <Flame className="w-6 h-6 inline-block" />
             </span>
           ))}
         </div>
       </section>
+
       <style>{`
         @keyframes marquee {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
         }
         .animate-marquee {
-          animation: marquee 20s linear infinite;
+          animation: marquee 22s linear infinite;
           width: max-content;
         }
       `}</style>
