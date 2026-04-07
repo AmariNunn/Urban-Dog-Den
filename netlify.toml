@@ -1,15 +1,14 @@
 [build]
-  base      = "."
-  command   = "pnpm install && pnpm --filter @workspace/bawse-dawgs run build"
-  publish   = "artifacts/bawse-dawgs/dist/public"
+  base    = "."
+  command = "pnpm install --no-frozen-lockfile && BASE_PATH=/ pnpm --filter @workspace/bawse-dawgs run build"
+  publish = "artifacts/bawse-dawgs/dist/public"
 
 [build.environment]
   NODE_VERSION = "20"
-  PNPM_VERSION = "9"
+  PNPM_VERSION = "10"
   BASE_PATH    = "/"
-  NODE_ENV     = "production"
 
-# SPA fallback — all routes serve index.html
+# SPA fallback — all routes serve index.html so direct URLs and refreshes work
 [[redirects]]
   from   = "/*"
   to     = "/index.html"
