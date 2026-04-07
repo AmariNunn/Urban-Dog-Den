@@ -19,7 +19,7 @@ export function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-primary/20">
       <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 z-50" data-testid="link-home">
-          <img src={import.meta.env.BASE_URL + "bawse-dawgs-logo.png"} alt="Bawse Dawgs" className="h-12 w-auto object-contain" />
+          <img src={import.meta.env.BASE_URL + "bawse-dawgs-logo.png"} alt="Bawse Dawgs" className="h-16 w-auto object-contain" />
           <span className="font-display text-2xl text-white hidden sm:block tracking-widest mt-1">BAWSE DAWGS</span>
         </Link>
 
