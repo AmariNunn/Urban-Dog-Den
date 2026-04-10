@@ -94,15 +94,15 @@ export default function Home() {
           />
         ))}
 
-        {/* LOGO — top 60vh, pinned to bottom of that zone */}
+        {/* LOGO — centered in top 60vh zone */}
         <div
-          className="absolute left-0 right-0 z-10 flex items-end justify-center px-4 pb-3"
+          className="absolute left-0 right-0 z-10 flex items-center justify-center px-4"
           style={{ top: 0, height: "60vh", paddingTop: "80px" }}
         >
           <motion.div
-            initial={{ opacity: 0, scale: 0.85 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 12, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
           >
             <img
               src={import.meta.env.BASE_URL + "bawse-dawgs-logo.png"}
