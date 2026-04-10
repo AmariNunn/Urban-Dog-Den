@@ -109,9 +109,9 @@ export default function Home() {
                 alt="Bawse Dawgs"
                 className="mx-auto"
                 style={{
-                  width: "clamp(200px, 52vw, 920px)",
-                  height: "auto",
-                  maxHeight: "40vh",
+                  width: "min(88vw, 560px)",
+                  height: "min(42vh, 420px)",
+                  objectFit: "contain",
                   filter: "drop-shadow(0 0 50px rgba(201,162,39,0.30))",
                 }}
               />
