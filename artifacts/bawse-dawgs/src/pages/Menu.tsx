@@ -119,9 +119,6 @@ export default function Menu() {
               <span className="font-heading text-[10px] tracking-[0.45em] text-primary/60 uppercase">No Shortcuts, Just Flavor.</span>
               <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary/50" />
             </div>
-            <h1 className="font-display text-6xl md:text-8xl text-white tracking-tighter">
-              THE <span className="text-primary" style={{ textShadow: "0 0 40px rgba(201,162,39,0.3)" }}>MENU</span>
-            </h1>
           </div>
 
           {/* Combo callout bar */}

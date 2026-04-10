@@ -155,7 +155,7 @@ export default function Home() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mb-5"
+            className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mb-8"
           >
             <Link
               href="/order"
