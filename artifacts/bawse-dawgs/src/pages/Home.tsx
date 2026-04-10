@@ -98,20 +98,18 @@ export default function Home() {
         <div className="relative z-10 flex-1 flex flex-col items-center justify-start pt-[calc(7rem-59px)] px-4 pb-4 w-full gap-5">
 
           {/* LOGO */}
-          <div className="flex items-center justify-center w-full overflow-hidden">
+          <div className="flex items-center justify-center w-full">
             <motion.div
               initial={{ opacity: 0, y: 12, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-              className="flex items-center justify-center"
-              style={{ maxWidth: "100%", maxHeight: "100%" }}
             >
               <img
                 src={import.meta.env.BASE_URL + "bawse-dawgs-logo.png"}
                 alt="Bawse Dawgs"
                 className="mx-auto"
                 style={{
-                  height: "clamp(612px, 129vh, 1589px)",
+                  height: "clamp(437px, 92vh, 1135px)",
                   width: "auto",
                   maxWidth: "88vw",
                   display: "block",
