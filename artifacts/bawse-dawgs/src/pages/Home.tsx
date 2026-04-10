@@ -94,111 +94,111 @@ export default function Home() {
           />
         ))}
 
-        {/* LOGO — centered in top 60vh zone */}
-        <div
-          className="absolute left-0 right-0 z-10 flex items-center justify-center px-4"
-          style={{ top: 0, height: "60vh", paddingTop: "96px" }}
-        >
-          <motion.div
-            initial={{ opacity: 0, y: 12, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <img
-              src={import.meta.env.BASE_URL + "bawse-dawgs-logo.png"}
-              alt="Bawse Dawgs"
-              className="mx-auto"
-              style={{
-                height: "calc((60vh - 115px) * 1.4)",
-                width: "auto",
-                maxHeight: "52vh",
-                maxWidth: "min(88vw, 875px)",
-                filter: "drop-shadow(0 0 50px rgba(201,162,39,0.30))",
-              }}
-            />
-          </motion.div>
-        </div>
+        {/* ── Hero content — fluid flex column, no hardcoded zones ── */}
+        <div className="relative z-10 flex-1 flex flex-col items-center pt-24 px-4 pb-6 w-full">
 
-        {/* TEXT + BUTTONS — bottom 40vh, vertically centered */}
-        <div
-          className="absolute left-0 right-0 z-10 flex flex-col items-center justify-center px-4 pb-8 text-center"
-          style={{ top: "60vh", height: "40vh" }}
-        >
-          {/* Main tagline */}
-          <motion.h1
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.7 }}
-            className="font-display text-5xl md:text-7xl lg:text-8xl text-white tracking-tighter leading-[0.88] mb-3"
-          >
-            GOOD DOGS
-            <br />
-            <span
-              className="text-primary"
-              style={{ textShadow: "0 0 60px rgba(201,162,39,0.35)" }}
+          {/* LOGO — fills upper flex space, centers itself */}
+          <div className="flex-1 flex items-center justify-center w-full py-4">
+            <motion.div
+              initial={{ opacity: 0, y: 12, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
             >
-              DONE DIFFERENT
-            </span>
-          </motion.h1>
+              <img
+                src={import.meta.env.BASE_URL + "bawse-dawgs-logo.png"}
+                alt="Bawse Dawgs"
+                className="mx-auto"
+                style={{
+                  maxHeight: "46vh",
+                  maxWidth: "min(86vw, 520px)",
+                  width: "auto",
+                  height: "auto",
+                  filter: "drop-shadow(0 0 50px rgba(201,162,39,0.30))",
+                }}
+              />
+            </motion.div>
+          </div>
 
-          {/* Sub-headline */}
-          <motion.p
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.38, duration: 0.6 }}
-            className="text-sm md:text-lg font-heading text-white/45 tracking-[0.35em] uppercase mb-6"
-          >
-            No shortcuts, just flavor.
-          </motion.p>
+          {/* TEXT + BUTTONS — natural size, anchored to bottom */}
+          <div className="flex flex-col items-center w-full max-w-lg mx-auto gap-0">
 
-          {/* CTA buttons */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mb-8"
-          >
-            <Link
-              href="/order"
-              data-testid="button-order-now"
-              className="shimmer-btn px-10 py-4 rounded-sm uppercase tracking-widest font-bold flex items-center justify-center gap-3"
+            {/* Main tagline */}
+            <motion.h1
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.7 }}
+              className="font-display text-5xl md:text-7xl lg:text-8xl text-white tracking-tighter leading-[0.88] mb-3 text-center"
             >
-              Order Now <ArrowRight className="w-5 h-5" />
-            </Link>
-            <Link
-              href="/menu"
-              data-testid="button-view-menu"
-              className="shimmer-btn-red px-10 py-4 rounded-sm uppercase tracking-widest font-bold flex items-center justify-center gap-3"
-            >
-              View Menu
-            </Link>
-          </motion.div>
+              GOOD DOGS
+              <br />
+              <span
+                className="text-primary"
+                style={{ textShadow: "0 0 60px rgba(201,162,39,0.35)" }}
+              >
+                DONE DIFFERENT
+              </span>
+            </motion.h1>
 
-          {/* Stat row */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.85, duration: 0.8 }}
-            className="flex items-center gap-6 md:gap-10 flex-wrap justify-center"
-          >
-            {[
-              { label: "100% Beef", sub: "No fillers. Ever." },
-              { label: "Bawse Sauce", sub: "Made in-house." },
-              { label: "Chef-Driven", sub: "Built to stand out." },
-            ].map((stat, i) => (
-              <div key={i} className="text-center">
-                <div
-                  className="font-display text-xl md:text-2xl text-primary tracking-wide"
-                  style={{ textShadow: "0 0 20px rgba(201,162,39,0.3)" }}
-                >
-                  {stat.label}
+            {/* Sub-headline */}
+            <motion.p
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.38, duration: 0.6 }}
+              className="text-sm md:text-lg font-heading text-white/45 tracking-[0.35em] uppercase mb-5 text-center"
+            >
+              No shortcuts, just flavor.
+            </motion.p>
+
+            {/* CTA buttons */}
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.6 }}
+              className="flex flex-col sm:flex-row gap-4 w-full mb-6"
+            >
+              <Link
+                href="/order"
+                data-testid="button-order-now"
+                className="shimmer-btn px-10 py-4 rounded-sm uppercase tracking-widest font-bold flex items-center justify-center gap-3 flex-1"
+              >
+                Order Now <ArrowRight className="w-5 h-5" />
+              </Link>
+              <Link
+                href="/menu"
+                data-testid="button-view-menu"
+                className="shimmer-btn-red px-10 py-4 rounded-sm uppercase tracking-widest font-bold flex items-center justify-center gap-3 flex-1"
+              >
+                View Menu
+              </Link>
+            </motion.div>
+
+            {/* Stat row */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.85, duration: 0.8 }}
+              className="flex items-center gap-5 md:gap-10 flex-wrap justify-center"
+            >
+              {[
+                { label: "100% Beef", sub: "No fillers. Ever." },
+                { label: "Bawse Sauce", sub: "Made in-house." },
+                { label: "Chef-Driven", sub: "Built to stand out." },
+              ].map((stat, i) => (
+                <div key={i} className="text-center">
+                  <div
+                    className="font-display text-lg md:text-2xl text-primary tracking-wide"
+                    style={{ textShadow: "0 0 20px rgba(201,162,39,0.3)" }}
+                  >
+                    {stat.label}
+                  </div>
+                  <div className="text-[10px] text-white/30 font-heading tracking-widest uppercase mt-0.5">
+                    {stat.sub}
+                  </div>
                 </div>
-                <div className="text-xs text-white/30 font-heading tracking-widest uppercase mt-1">
-                  {stat.sub}
-                </div>
-              </div>
-            ))}
-          </motion.div>
+              ))}
+            </motion.div>
+          </div>
+
         </div>
 
         {/* Bottom fade */}
