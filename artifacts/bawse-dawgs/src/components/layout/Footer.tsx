@@ -18,7 +18,7 @@ export function Footer() {
         </div>
         
         <div className="text-xs text-muted-foreground/50 border-t border-white/5 pt-8 w-full">
-          &copy; {new Date().getFullYear()} Bawse Dawgs. All rights reserved. Just a Good Ol' Dawg.
+          &copy; {new Date().getFullYear()} Bawse Dawgs. All rights reserved. Good Ol' Dawgs.
         </div>
       </div>
     </footer>
