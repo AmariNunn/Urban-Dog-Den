@@ -1,6 +1,6 @@
 import { PageTransition } from "@/components/layout/PageTransition";
 import { motion } from "framer-motion";
-import { Shield, TrendingUp, Zap, Target, Crown, Flame } from "lucide-react";
+import { Shield, TrendingUp, Zap, Target, Flame } from "lucide-react";
 
 const STARS = Array.from({ length: 50 }, (_, i) => ({
   id: i,
@@ -55,9 +55,7 @@ export default function About() {
               className="flex items-center justify-center gap-3 mb-5"
             >
               <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary/50" />
-              <Crown className="w-4 h-4 text-primary" />
               <span className="font-heading text-[10px] tracking-[0.45em] text-primary/60 uppercase">The Brand</span>
-              <Crown className="w-4 h-4 text-primary" />
               <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary/50" />
             </motion.div>
 

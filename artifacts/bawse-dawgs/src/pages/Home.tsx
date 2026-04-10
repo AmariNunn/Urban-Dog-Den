@@ -1,7 +1,7 @@
 import { PageTransition } from "@/components/layout/PageTransition";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { ArrowRight, Flame, Crown, Star } from "lucide-react";
+import { ArrowRight, Flame, Star } from "lucide-react";
 import { useRef } from "react";
 
 const STAR_POSITIONS = Array.from({ length: 60 }, (_, i) => ({
@@ -96,39 +96,35 @@ export default function Home() {
 
         {/* ── Content ── */}
         <div className="relative z-10 flex flex-col items-center max-w-5xl mx-auto">
-          {/* Small crown eyebrow */}
+
+          {/* Big centered logo */}
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex items-center gap-3 mb-6"
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            className="mb-8"
           >
-            <div className="h-px w-16 bg-gradient-to-r from-transparent to-primary/60" />
-            <Crown className="w-5 h-5 text-primary" />
-            <span className="font-heading text-xs tracking-[0.4em] text-primary/80 uppercase">
-              Street Dawgs Done Different
-            </span>
-            <Crown className="w-5 h-5 text-primary" />
-            <div className="h-px w-16 bg-gradient-to-l from-transparent to-primary/60" />
+            <img
+              src={import.meta.env.BASE_URL + "bawse-dawgs-logo.png"}
+              alt="Bawse Dawgs"
+              className="w-56 md:w-80 lg:w-[420px] mx-auto object-contain"
+              style={{ filter: "drop-shadow(0 0 50px rgba(201,162,39,0.30))" }}
+            />
           </motion.div>
 
-          {/* Main headline */}
+          {/* Main tagline */}
           <motion.h1
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.15, duration: 0.7 }}
-            className="font-display text-7xl md:text-9xl lg:text-[11rem] text-white tracking-tighter leading-[0.88] mb-6"
+            transition={{ delay: 0.2, duration: 0.7 }}
+            className="font-display text-6xl md:text-8xl lg:text-9xl text-white tracking-tighter leading-[0.9] mb-5 text-center"
           >
-            STREET
+            GOOD DOGS
             <br />
             <span
               className="text-primary"
               style={{ textShadow: "0 0 60px rgba(201,162,39,0.35)" }}
             >
-              DAWGS
-            </span>
-            <br />
-            <span className="text-secondary" style={{ fontSize: "0.6em" }}>
               DONE DIFFERENT
             </span>
           </motion.h1>
@@ -137,22 +133,10 @@ export default function Home() {
           <motion.p
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.35, duration: 0.6 }}
-            className="text-lg md:text-2xl font-heading text-white/50 tracking-[0.25em] uppercase mb-4"
+            transition={{ delay: 0.38, duration: 0.6 }}
+            className="text-base md:text-xl font-heading text-white/45 tracking-[0.35em] uppercase mb-10"
           >
-            Just a Good Ol' Dawg.
-          </motion.p>
-
-          {/* Editorial pull-quote */}
-          <motion.p
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.45, duration: 0.6 }}
-            className="max-w-2xl text-base md:text-lg text-white/35 font-sans leading-relaxed tracking-wide mb-10"
-          >
-            Blue-collar roots. Boss-level execution. Every single dawg built from scratch
-            with 100% beef, real toppings, and zero apologies. This is premium street
-            food — crafted for those who know the difference between good and legendary.
+            No shortcuts, just flavor.
           </motion.p>
 
           {/* CTA buttons */}
@@ -232,7 +216,7 @@ export default function Home() {
               <span className="text-white">No Fillers.</span>
             </h2>
             <p className="text-xl font-heading text-white/30 uppercase tracking-widest">
-              No Shortcuts. No Compromise. Just Flavor.
+              No Shortcuts. Just Flavor.
             </p>
           </div>
 
@@ -245,7 +229,7 @@ export default function Home() {
                 desc: "We source real ingredients and build every dawg with intention. No shortcuts, no fillers — just premium flavor stacked the way it was meant to be eaten.",
               },
               {
-                icon: Crown,
+                icon: Star,
                 title: "Street Certified",
                 tag: "Southern Soul",
                 desc: "Southern-inspired, street-certified. From Nashville heat to Carolina slaw — our flavor DNA runs deep. Every bite carries a story that hits different.",

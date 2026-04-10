@@ -1,6 +1,6 @@
 import { PageTransition } from "@/components/layout/PageTransition";
 import { useCart } from "@/context/CartContext";
-import { Flame, Plus, Crown } from "lucide-react";
+import { Flame, Plus } from "lucide-react";
 import { motion } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
 
@@ -116,9 +116,7 @@ export default function Menu() {
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-4">
               <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary/50" />
-              <Crown className="w-4 h-4 text-primary" />
-              <span className="font-heading text-[10px] tracking-[0.45em] text-primary/60 uppercase">No Shortcuts. Just Flavor.</span>
-              <Crown className="w-4 h-4 text-primary" />
+              <span className="font-heading text-[10px] tracking-[0.45em] text-primary/60 uppercase">No Shortcuts, Just Flavor.</span>
               <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary/50" />
             </div>
             <h1 className="font-display text-6xl md:text-8xl text-white tracking-tighter">
@@ -174,7 +172,6 @@ export default function Menu() {
                           <h3 className="font-display text-xl tracking-wide flex items-center gap-2 text-white">
                             {item.name}
                             {item.spicy && <Flame className="w-4 h-4 text-secondary flex-shrink-0" />}
-                            {item.crown && <Crown className="w-4 h-4 text-primary flex-shrink-0" />}
                           </h3>
                           <span className="font-heading text-lg text-primary ml-4 flex-shrink-0">${item.price}</span>
                         </div>

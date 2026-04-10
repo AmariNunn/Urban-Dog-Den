@@ -2,7 +2,7 @@ import { PageTransition } from "@/components/layout/PageTransition";
 import { useCart } from "@/context/CartContext";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { Minus, Plus, Trash2, ArrowRight, ShoppingBag, CheckCircle2, Crown } from "lucide-react";
+import { Minus, Plus, Trash2, ArrowRight, ShoppingBag, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -115,7 +115,6 @@ export default function Order() {
         <div className="relative z-10 max-w-6xl mx-auto px-4 pt-10 pb-16">
           {/* Header */}
           <div className="flex items-center gap-3 mb-8 pb-4 border-b border-white/[0.07]">
-            <Crown className="w-5 h-5 text-primary" />
             <h1 className="font-display text-4xl md:text-5xl text-white tracking-tighter">
               YOUR <span className="text-primary">ORDER</span>
             </h1>
