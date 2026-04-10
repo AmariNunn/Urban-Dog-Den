@@ -94,10 +94,10 @@ export default function Home() {
           />
         ))}
 
-        {/* LOGO — top 48vh, pinned to bottom of that zone */}
+        {/* LOGO — top 60vh, pinned to bottom of that zone */}
         <div
           className="absolute left-0 right-0 z-10 flex items-end justify-center px-4 pb-3"
-          style={{ top: 0, height: "48vh", paddingTop: "80px" }}
+          style={{ top: 0, height: "60vh", paddingTop: "80px" }}
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.85 }}
@@ -109,19 +109,19 @@ export default function Home() {
               alt="Bawse Dawgs"
               className="mx-auto"
               style={{
-                height: "calc(48vh - 92px)",
+                height: "calc(60vh - 115px)",
                 width: "auto",
-                maxWidth: "min(85vw, 500px)",
+                maxWidth: "min(85vw, 625px)",
                 filter: "drop-shadow(0 0 50px rgba(201,162,39,0.30))",
               }}
             />
           </motion.div>
         </div>
 
-        {/* TEXT + BUTTONS — bottom 52vh, vertically centered */}
+        {/* TEXT + BUTTONS — bottom 40vh, vertically centered */}
         <div
           className="absolute left-0 right-0 z-10 flex flex-col items-center justify-center px-4 pb-8 text-center"
-          style={{ top: "48vh", height: "52vh" }}
+          style={{ top: "60vh", height: "40vh" }}
         >
           {/* Main tagline */}
           <motion.h1
