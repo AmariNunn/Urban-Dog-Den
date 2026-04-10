@@ -95,7 +95,7 @@ export default function Home() {
         ))}
 
         {/* ── Hero content — fluid flex column, no hardcoded zones ── */}
-        <div className="relative z-10 flex-1 flex flex-col items-center justify-start pt-[calc(7rem-30px)] px-4 pb-4 w-full gap-5">
+        <div className="relative z-10 flex-1 flex flex-col items-center justify-start pt-[calc(7rem-59px)] px-4 pb-4 w-full gap-5">
 
           {/* LOGO */}
           <div className="flex items-center justify-center w-full">
