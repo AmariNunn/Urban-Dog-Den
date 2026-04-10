@@ -95,10 +95,10 @@ export default function Home() {
         ))}
 
         {/* ── Hero content — fluid flex column, no hardcoded zones ── */}
-        <div className="relative z-10 flex-1 flex flex-col items-center justify-start pt-[calc(7rem-59px)] px-4 pb-4 w-full gap-5">
+        <div className="relative z-10 flex-1 flex flex-col lg:flex-row items-center lg:items-center justify-start lg:justify-center pt-[calc(7rem-59px)] px-4 pb-4 w-full gap-5 lg:gap-12">
 
           {/* LOGO */}
-          <div className="flex items-center justify-center w-full">
+          <div className="flex items-center justify-center w-full lg:w-1/2 lg:flex-shrink-0">
             <motion.div
               initial={{ opacity: 0, y: 12, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -120,14 +120,14 @@ export default function Home() {
           </div>
 
           {/* TEXT + BUTTONS */}
-          <div className="flex flex-col items-center w-full max-w-lg mx-auto gap-3">
+          <div className="flex flex-col items-center lg:items-start w-full max-w-lg mx-auto lg:mx-0 lg:max-w-none lg:w-1/2 gap-3">
 
             {/* Main tagline */}
             <motion.h1
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.7 }}
-              className="font-display text-5xl md:text-7xl lg:text-8xl text-white tracking-tighter leading-[0.88] text-center"
+              className="font-display text-5xl md:text-7xl lg:text-8xl text-white tracking-tighter leading-[0.88] text-center lg:text-left"
             >
               GOOD DOGS
               <br />
@@ -144,7 +144,7 @@ export default function Home() {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.38, duration: 0.6 }}
-              className="text-sm md:text-lg font-heading text-white/45 tracking-[0.35em] uppercase text-center"
+              className="text-sm md:text-lg font-heading text-white/45 tracking-[0.35em] uppercase text-center lg:text-left"
             >
               No shortcuts, just flavor.
             </motion.p>
@@ -177,7 +177,7 @@ export default function Home() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.85, duration: 0.8 }}
-              className="flex items-center gap-5 md:gap-10 flex-wrap justify-center"
+              className="flex items-center gap-5 md:gap-10 flex-wrap justify-center lg:justify-start"
             >
               {[
                 { label: "100% Beef", sub: "No fillers. Ever." },
