@@ -102,7 +102,7 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
-            className="mb-6 md:mb-4"
+            className="mb-0"
           >
             <img
               src={import.meta.env.BASE_URL + "bawse-dawgs-logo.png"}
