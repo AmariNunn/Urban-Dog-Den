@@ -18,8 +18,8 @@ export function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-primary/20">
       <div className="max-w-7xl mx-auto px-4 h-24 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 z-50" data-testid="link-home">
-          <img src={import.meta.env.BASE_URL + "bawse-dawgs-logo.png"} alt="Bawse Dawgs" className="h-[90px] w-auto object-contain" />
+        <Link href="/" className="flex items-center gap-2 z-50 h-full" data-testid="link-home">
+          <img src={import.meta.env.BASE_URL + "bawse-dawgs-logo.png"} alt="Bawse Dawgs" className="h-[100px] w-auto object-contain" />
         </Link>
 
         {/* Desktop Nav */}
