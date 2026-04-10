@@ -94,10 +94,10 @@ export default function Home() {
           />
         ))}
 
-        {/* LOGO — top 44vh, pinned to bottom of that zone */}
+        {/* LOGO — top 48vh, pinned to bottom of that zone */}
         <div
           className="absolute left-0 right-0 z-10 flex items-end justify-center px-4 pb-3"
-          style={{ top: 0, height: "44vh", paddingTop: "80px" }}
+          style={{ top: 0, height: "48vh", paddingTop: "80px" }}
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.85 }}
@@ -107,16 +107,21 @@ export default function Home() {
             <img
               src={import.meta.env.BASE_URL + "bawse-dawgs-logo.png"}
               alt="Bawse Dawgs"
-              className="w-64 md:w-[360px] lg:w-[420px] mx-auto object-contain"
-              style={{ filter: "drop-shadow(0 0 50px rgba(201,162,39,0.30))" }}
+              className="mx-auto"
+              style={{
+                height: "calc(48vh - 92px)",
+                width: "auto",
+                maxWidth: "min(85vw, 500px)",
+                filter: "drop-shadow(0 0 50px rgba(201,162,39,0.30))",
+              }}
             />
           </motion.div>
         </div>
 
-        {/* TEXT + BUTTONS — bottom 56vh, vertically centered */}
+        {/* TEXT + BUTTONS — bottom 52vh, vertically centered */}
         <div
           className="absolute left-0 right-0 z-10 flex flex-col items-center justify-center px-4 pb-8 text-center"
-          style={{ top: "44vh", height: "56vh" }}
+          style={{ top: "48vh", height: "52vh" }}
         >
           {/* Main tagline */}
           <motion.h1
