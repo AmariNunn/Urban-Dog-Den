@@ -98,7 +98,7 @@ export default function Home() {
         <div className="relative z-10 flex-1 flex flex-col lg:flex-row items-center lg:items-center justify-start lg:justify-center pt-[calc(7rem-59px)] px-4 pb-4 w-full gap-5 lg:gap-12">
 
           {/* LOGO */}
-          <div className="flex items-center justify-center w-full lg:w-1/2 lg:flex-shrink-0">
+          <div className="flex items-center justify-center w-full max-h-[280px] overflow-hidden lg:max-h-none lg:overflow-visible lg:w-1/2 lg:flex-shrink-0">
             <motion.div
               initial={{ opacity: 0, y: 12, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
