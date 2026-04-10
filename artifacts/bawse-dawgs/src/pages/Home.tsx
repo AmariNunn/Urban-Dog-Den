@@ -95,7 +95,7 @@ export default function Home() {
         ))}
 
         {/* ── Content ── */}
-        <div className="relative z-10 flex flex-col items-center max-w-5xl mx-auto -translate-y-6 md:-translate-y-10">
+        <div className="relative z-10 flex flex-col items-center max-w-5xl mx-auto -translate-y-[30px] md:-translate-y-[40px]">
 
           {/* Big centered logo */}
           <motion.div
