@@ -20,7 +20,7 @@ export default function Home() {
       {/* ── HERO ── */}
       <section
         ref={heroRef}
-        className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden text-center px-4"
+        className="relative min-h-screen lg:h-screen flex flex-col overflow-hidden text-center"
         style={{ background: "#07060a" }}
       >
         {/* Grain overlay */}
@@ -94,30 +94,36 @@ export default function Home() {
           />
         ))}
 
-        {/* ── Content ── */}
-        <div className="relative z-10 flex flex-col items-center max-w-5xl mx-auto -translate-y-[30px] md:-translate-y-[40px]">
-
-          {/* Big centered logo */}
+        {/* LOGO — top 44vh, pinned to bottom of that zone */}
+        <div
+          className="absolute left-0 right-0 z-10 flex items-end justify-center px-4 pb-3"
+          style={{ top: 0, height: "44vh", paddingTop: "80px" }}
+        >
           <motion.div
             initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
-            className="mb-0"
           >
             <img
               src={import.meta.env.BASE_URL + "bawse-dawgs-logo.png"}
               alt="Bawse Dawgs"
-              className="w-64 md:w-[384px] lg:w-[504px] mx-auto object-contain"
+              className="w-64 md:w-[360px] lg:w-[420px] mx-auto object-contain"
               style={{ filter: "drop-shadow(0 0 50px rgba(201,162,39,0.30))" }}
             />
           </motion.div>
+        </div>
 
+        {/* TEXT + BUTTONS — bottom 56vh, vertically centered */}
+        <div
+          className="absolute left-0 right-0 z-10 flex flex-col items-center justify-center px-4 pb-8 text-center"
+          style={{ top: "44vh", height: "56vh" }}
+        >
           {/* Main tagline */}
           <motion.h1
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.7 }}
-            className="font-display text-6xl md:text-8xl lg:text-9xl text-white tracking-tighter leading-[0.88] mb-4 text-center"
+            className="font-display text-5xl md:text-7xl lg:text-8xl text-white tracking-tighter leading-[0.88] mb-3"
           >
             GOOD DOGS
             <br />
@@ -134,7 +140,7 @@ export default function Home() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.38, duration: 0.6 }}
-            className="text-base md:text-xl font-heading text-white/45 tracking-[0.35em] uppercase mb-8"
+            className="text-sm md:text-lg font-heading text-white/45 tracking-[0.35em] uppercase mb-6"
           >
             No shortcuts, just flavor.
           </motion.p>
@@ -144,19 +150,19 @@ export default function Home() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.6 }}
-            className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto mb-12"
+            className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mb-5"
           >
             <Link
               href="/order"
               data-testid="button-order-now"
-              className="shimmer-btn px-12 py-5 rounded-sm uppercase tracking-widest font-bold flex items-center justify-center gap-3"
+              className="shimmer-btn px-10 py-4 rounded-sm uppercase tracking-widest font-bold flex items-center justify-center gap-3"
             >
               Order Now <ArrowRight className="w-5 h-5" />
             </Link>
             <Link
               href="/menu"
               data-testid="button-view-menu"
-              className="shimmer-btn-red px-12 py-5 rounded-sm uppercase tracking-widest font-bold flex items-center justify-center gap-3"
+              className="shimmer-btn-red px-10 py-4 rounded-sm uppercase tracking-widest font-bold flex items-center justify-center gap-3"
             >
               View Menu
             </Link>
@@ -167,7 +173,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.85, duration: 0.8 }}
-            className="flex items-center gap-6 md:gap-8 flex-wrap justify-center"
+            className="flex items-center gap-6 md:gap-10 flex-wrap justify-center"
           >
             {[
               { label: "100% Beef", sub: "No fillers. Ever." },
@@ -176,7 +182,7 @@ export default function Home() {
             ].map((stat, i) => (
               <div key={i} className="text-center">
                 <div
-                  className="font-display text-2xl md:text-3xl text-primary tracking-wide"
+                  className="font-display text-xl md:text-2xl text-primary tracking-wide"
                   style={{ textShadow: "0 0 20px rgba(201,162,39,0.3)" }}
                 >
                   {stat.label}
