@@ -95,14 +95,14 @@ export default function Home() {
         ))}
 
         {/* ── Content ── */}
-        <div className="relative z-10 flex flex-col items-center max-w-5xl mx-auto">
+        <div className="relative z-10 flex flex-col items-center max-w-5xl mx-auto -translate-y-6 md:-translate-y-10">
 
           {/* Big centered logo */}
           <motion.div
             initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
-            className="mb-8"
+            className="mb-6 md:mb-4"
           >
             <img
               src={import.meta.env.BASE_URL + "bawse-dawgs-logo.png"}
@@ -117,7 +117,7 @@ export default function Home() {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.7 }}
-            className="font-display text-6xl md:text-8xl lg:text-9xl text-white tracking-tighter leading-[0.9] mb-5 text-center"
+            className="font-display text-6xl md:text-8xl lg:text-9xl text-white tracking-tighter leading-[0.88] mb-4 text-center"
           >
             GOOD DOGS
             <br />
@@ -134,7 +134,7 @@ export default function Home() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.38, duration: 0.6 }}
-            className="text-base md:text-xl font-heading text-white/45 tracking-[0.35em] uppercase mb-10"
+            className="text-base md:text-xl font-heading text-white/45 tracking-[0.35em] uppercase mb-8"
           >
             No shortcuts, just flavor.
           </motion.p>
@@ -144,7 +144,7 @@ export default function Home() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.6 }}
-            className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto mb-16"
+            className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto mb-12"
           >
             <Link
               href="/order"
@@ -167,7 +167,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.85, duration: 0.8 }}
-            className="flex items-center gap-8 md:gap-10 flex-wrap justify-center"
+            className="flex items-center gap-6 md:gap-8 flex-wrap justify-center"
           >
             {[
               { label: "100% Beef", sub: "No fillers. Ever." },
