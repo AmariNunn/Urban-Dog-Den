@@ -95,10 +95,10 @@ export default function Home() {
         ))}
 
         {/* ── Hero content — fluid flex column, no hardcoded zones ── */}
-        <div className="relative z-10 flex-1 flex flex-col items-center pt-24 px-4 pb-6 w-full">
+        <div className="relative z-10 flex-1 flex flex-col items-center justify-start pt-28 px-4 pb-4 w-full gap-5">
 
-          {/* LOGO — fills upper flex space, centers itself */}
-          <div className="flex-1 flex items-center justify-center w-full py-4">
+          {/* LOGO */}
+          <div className="flex items-center justify-center w-full">
             <motion.div
               initial={{ opacity: 0, y: 12, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -109,24 +109,24 @@ export default function Home() {
                 alt="Bawse Dawgs"
                 className="mx-auto"
                 style={{
-                  width: "clamp(220px, 52vw, 920px)",
+                  width: "clamp(200px, 52vw, 920px)",
                   height: "auto",
-                  maxHeight: "58vh",
+                  maxHeight: "40vh",
                   filter: "drop-shadow(0 0 50px rgba(201,162,39,0.30))",
                 }}
               />
             </motion.div>
           </div>
 
-          {/* TEXT + BUTTONS — natural size, anchored to bottom */}
-          <div className="flex flex-col items-center w-full max-w-lg mx-auto gap-0">
+          {/* TEXT + BUTTONS */}
+          <div className="flex flex-col items-center w-full max-w-lg mx-auto gap-3">
 
             {/* Main tagline */}
             <motion.h1
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.7 }}
-              className="font-display text-5xl md:text-7xl lg:text-8xl text-white tracking-tighter leading-[0.88] mb-3 text-center"
+              className="font-display text-5xl md:text-7xl lg:text-8xl text-white tracking-tighter leading-[0.88] text-center"
             >
               GOOD DOGS
               <br />
@@ -143,7 +143,7 @@ export default function Home() {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.38, duration: 0.6 }}
-              className="text-sm md:text-lg font-heading text-white/45 tracking-[0.35em] uppercase mb-5 text-center"
+              className="text-sm md:text-lg font-heading text-white/45 tracking-[0.35em] uppercase text-center"
             >
               No shortcuts, just flavor.
             </motion.p>
@@ -153,7 +153,7 @@ export default function Home() {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 w-full mb-6"
+              className="flex flex-col sm:flex-row gap-3 w-full"
             >
               <Link
                 href="/order"
