@@ -97,7 +97,7 @@ export default function Home() {
         {/* LOGO — centered in top 60vh zone */}
         <div
           className="absolute left-0 right-0 z-10 flex items-center justify-center px-4"
-          style={{ top: 0, height: "60vh", paddingTop: "80px" }}
+          style={{ top: 0, height: "60vh", paddingTop: "96px" }}
         >
           <motion.div
             initial={{ opacity: 0, y: 12, scale: 0.96 }}
