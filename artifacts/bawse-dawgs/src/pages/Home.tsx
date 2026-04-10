@@ -107,7 +107,7 @@ export default function Home() {
             <img
               src={import.meta.env.BASE_URL + "bawse-dawgs-logo.png"}
               alt="Bawse Dawgs"
-              className="w-56 md:w-80 lg:w-[420px] mx-auto object-contain"
+              className="w-64 md:w-[384px] lg:w-[504px] mx-auto object-contain"
               style={{ filter: "drop-shadow(0 0 50px rgba(201,162,39,0.30))" }}
             />
           </motion.div>
@@ -167,7 +167,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.85, duration: 0.8 }}
-            className="flex items-center gap-10 md:gap-16 flex-wrap justify-center"
+            className="flex items-center gap-8 md:gap-10 flex-wrap justify-center"
           >
             {[
               { label: "100% Beef", sub: "No fillers. Ever." },
