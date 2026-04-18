@@ -118,12 +118,12 @@ export default function About() {
               <p className="font-heading text-[10px] tracking-[0.4em] text-primary/50 uppercase">Our Story</p>
               <h2 className="font-display text-4xl md:text-5xl text-white leading-tight">
                 Blue-Collar Roots.{" "}
-                <span className="text-primary">Boss-Level</span>{" "}
+                <span className="text-primary">BAWSE-Level</span>{" "}
                 Execution.
               </h2>
               <p className="text-white/40 font-sans leading-relaxed text-sm">
                 <span className="text-primary font-semibold">Bawse Dawgs</span> isn't just another hot dog stand — it's a statement. Born
-                from the hustle and flavor of the streets, we bring boss-level execution to an
+                from the hustle and flavor of the streets, we bring BAWSE-level execution to an
                 American classic. No cut corners. No basic builds. Every dawg is 100% beef,
                 loaded with premium, scratch-made toppings, and crafted to perfection.
               </p>
@@ -232,7 +232,7 @@ export default function About() {
           <div className="max-w-5xl mx-auto">
             <div className="flex items-end justify-between mb-10">
               <div>
-                <p className="font-heading text-[10px] tracking-[0.4em] text-primary/50 uppercase mb-2">Think Like a Boss</p>
+                <p className="font-heading text-[10px] tracking-[0.4em] text-primary/50 uppercase mb-2">Think Like a BAWSE</p>
                 <h2 className="font-display text-4xl md:text-5xl text-white uppercase tracking-tight flex items-center gap-4">
                   The Blueprint <TrendingUp className="w-8 h-8 text-primary" />
                 </h2>
@@ -308,7 +308,7 @@ export default function About() {
               </p>
               <p className="text-white/25 text-sm font-sans mt-4 max-w-xl mx-auto leading-relaxed">
                 From the first truck to the thousandth franchise — the standard never drops. 
-                Street food with boss energy. Built different. Built to last.
+                Street food with BAWSE energy. Built different. Built to last.
               </p>
             </motion.div>
           </div>

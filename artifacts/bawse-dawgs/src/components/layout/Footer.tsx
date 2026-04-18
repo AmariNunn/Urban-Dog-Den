@@ -5,9 +5,9 @@ export function Footer() {
     <footer className="bg-[#050505] border-t border-primary/20 pt-16 pb-8 mt-auto">
       <div className="max-w-7xl mx-auto px-4 flex flex-col items-center text-center">
         <img src={import.meta.env.BASE_URL + "bawse-dawgs-logo.png"} alt="Bawse Dawgs" className="h-20 w-auto opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500 mb-6" />
-        <h3 className="font-display text-3xl text-primary tracking-widest mb-2">STREET DAWGS DONE DIFFERENT.</h3>
+        <h3 className="font-display text-3xl text-primary tracking-widest mb-2">GOOD DOGS DONE DIFFERENT.</h3>
         <p className="text-muted-foreground max-w-md mx-auto mb-8 font-sans">
-          100% Beef. No Fillers. No Shortcuts. Just Flavor. Boss-level execution on every dawg.
+          100% Beef. No Fillers. No Shortcuts. Just Flavor. BAWSE-level execution on every dawg.
         </p>
         
         <div className="flex gap-6 mb-12">

@@ -65,7 +65,7 @@ export default function Order() {
             </motion.h1>
             <motion.p initial={{ y: 15, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.3 }}
               className="text-base font-heading text-white/30 uppercase tracking-widest mb-10">
-              Your {orderType} is locked in. Boss-level execution incoming.
+              Your {orderType} is locked in. BAWSE-level execution incoming.
             </motion.p>
             <motion.div initial={{ y: 15, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.4 }}>
               <Link href="/" data-testid="button-back-to-home"
@@ -239,7 +239,7 @@ export default function Order() {
                 </button>
 
                 <p className="text-center text-[9px] text-white/15 font-heading tracking-widest uppercase mt-4">
-                  Boss-level execution guaranteed
+                  BAWSE-level execution guaranteed
                 </p>
               </div>
             </div>

@@ -51,7 +51,6 @@ const MENU_DATA = [
       { id: "bawse_fries", name: "Bawse Fries", desc: "Cheese, bacon, Bawse sauce", price: 9, spicy: false, crown: true },
       { id: "chili_fries", name: "Chili Cheese Fries", desc: "Chili, cheese", price: 9, spicy: false },
       { id: "elote_fries", name: "Elote Fries", desc: "Cotija, lime crema, tajin", price: 9, spicy: false },
-      { id: "dirty_fries", name: "Dirty Fries", desc: "Chili, cheese, jalapeños, onions", price: 10, spicy: true },
     ],
   },
   {

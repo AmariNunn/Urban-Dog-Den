@@ -122,32 +122,21 @@ export default function Home() {
           {/* TEXT + BUTTONS */}
           <div className="flex flex-col items-center lg:items-start w-full max-w-lg mx-auto lg:mx-0 lg:max-w-none lg:w-1/2 gap-3">
 
-            {/* Main tagline */}
-            <motion.h1
+            {/* Tagline */}
+            <motion.div
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.7 }}
-              className="font-display text-5xl md:text-7xl lg:text-8xl text-white tracking-tighter leading-[0.88] text-center lg:text-left"
+              className="text-center lg:text-left"
             >
-              GOOD DOGS
-              <br />
-              <span
-                className="text-primary"
-                style={{ textShadow: "0 0 60px rgba(201,162,39,0.35)" }}
-              >
-                DONE DIFFERENT
-              </span>
-            </motion.h1>
-
-            {/* Sub-headline */}
-            <motion.p
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.38, duration: 0.6 }}
-              className="text-sm md:text-lg font-heading text-white/45 tracking-[0.35em] uppercase text-center lg:text-left"
-            >
-              No shortcuts, just flavor.
-            </motion.p>
+              <p className="text-sm md:text-lg font-heading text-white/60 tracking-[0.25em] uppercase">
+                100% BEEF, NO FILLERS, NO SHORTCUTS, JUST FLAVOR
+              </p>
+              <p className="text-sm md:text-lg font-heading text-primary tracking-[0.25em] uppercase mt-1"
+                style={{ textShadow: "0 0 30px rgba(201,162,39,0.3)" }}>
+                JUST A GOOD OLD DOG
+              </p>
+            </motion.div>
 
             {/* CTA buttons */}
             <motion.div
@@ -248,7 +237,7 @@ export default function Home() {
               },
               {
                 icon: Star,
-                title: "Boss Execution",
+                title: "BAWSE Execution",
                 tag: "Every. Single. Time.",
                 desc: "We serve fast, we serve loud, and every dawg leaves the kitchen perfect. No weak energy. No sloppy builds. The Bawse Rule is non-negotiable.",
               },
