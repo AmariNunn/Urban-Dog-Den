@@ -165,8 +165,9 @@ export default function Menu() {
                       <div className="p-5">
                         <div className="flex justify-between items-start mb-1.5">
                           <h3 className="font-display text-xl tracking-wide flex items-center gap-2 text-white">
-                            {item.name}
+                            {item.crown && <span className="text-primary">👑</span>}
                             {item.spicy && <Flame className="w-4 h-4 text-secondary flex-shrink-0" />}
+                            {item.name}
                           </h3>
                           <span className="font-heading text-lg text-primary ml-4 flex-shrink-0">${item.price}</span>
                         </div>
