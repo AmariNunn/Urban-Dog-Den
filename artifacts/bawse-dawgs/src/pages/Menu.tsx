@@ -125,7 +125,6 @@ export default function Menu() {
             style={{ background: "rgba(204,0,0,0.06)" }}>
             <div>
               <span className="font-display text-xl text-secondary tracking-wide">MAKE ANY DAWG A COMBO</span>
-              <span className="ml-3 font-heading text-sm text-white/40 tracking-widest uppercase">Fries + Grippo's + Drink</span>
             </div>
             <span className="font-display text-3xl text-secondary">+$5</span>
           </div>
