@@ -201,7 +201,7 @@ export default function Home() {
               alt="Bawse Dawgs"
               className="mx-auto"
               style={{
-                height: "clamp(380px, 68vh, 720px)",
+                height: "clamp(494px, 88vh, 936px)",
                 width: "auto",
                 maxWidth: "96vw",
                 display: "block",
