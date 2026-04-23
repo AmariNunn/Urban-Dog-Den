@@ -1,7 +1,7 @@
 import { PageTransition } from "@/components/layout/PageTransition";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { ArrowRight, Flame } from "lucide-react";
+import { ArrowRight, Flame, Crown, Star } from "lucide-react";
 import { useRef } from "react";
 
 const STAR_POSITIONS = Array.from({ length: 60 }, (_, i) => ({
@@ -20,7 +20,7 @@ export default function Home() {
       {/* ── HERO ── */}
       <section
         ref={heroRef}
-        className="relative min-h-[82vh] flex flex-col overflow-hidden text-center"
+        className="relative min-h-[100vh] flex flex-col overflow-hidden text-center"
         style={{ background: "#07060a" }}
       >
         {/* Grain overlay */}
@@ -76,6 +76,99 @@ export default function Home() {
           }}
         />
 
+        {/* Large faded background letterforms */}
+        <div className="absolute inset-0 z-0 pointer-events-none flex flex-col items-center justify-between overflow-hidden select-none">
+          <div
+            style={{
+              fontFamily: "var(--app-font-display)",
+              fontSize: "clamp(80px, 18vw, 240px)",
+              color: "#c9a227",
+              opacity: 0.04,
+              letterSpacing: "0.12em",
+              lineHeight: 1,
+              paddingTop: "3vh",
+              userSelect: "none",
+              whiteSpace: "nowrap",
+            }}
+          >
+            BAWSE
+          </div>
+          <div
+            style={{
+              fontFamily: "var(--app-font-display)",
+              fontSize: "clamp(60px, 13vw, 180px)",
+              color: "#cc0000",
+              opacity: 0.035,
+              letterSpacing: "0.18em",
+              lineHeight: 1,
+              paddingBottom: "4vh",
+              userSelect: "none",
+              whiteSpace: "nowrap",
+            }}
+          >
+            DAWGS
+          </div>
+        </div>
+
+        {/* Top decorative badges */}
+        <div className="absolute top-0 left-0 right-0 z-10 pointer-events-none flex items-start justify-between px-6 pt-20">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.9 }}
+            className="flex flex-col items-center gap-2"
+          >
+            <Crown style={{ width: 22, height: 22, color: "#c9a227", opacity: 0.55 }} />
+            <div style={{ width: 1, height: 36, background: "linear-gradient(to bottom, rgba(201,162,39,0.4), transparent)" }} />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 1.0, duration: 0.8 }}
+            style={{
+              fontFamily: "var(--app-font-display)",
+              fontSize: "0.7rem",
+              letterSpacing: "0.3em",
+              color: "rgba(201,162,39,0.45)",
+              textTransform: "uppercase",
+              userSelect: "none",
+              paddingTop: "0.25rem",
+            }}
+          >
+            Est. 2024
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.9 }}
+            className="flex flex-col items-center gap-2"
+          >
+            <Crown style={{ width: 22, height: 22, color: "#c9a227", opacity: 0.55 }} />
+            <div style={{ width: 1, height: 36, background: "linear-gradient(to bottom, rgba(201,162,39,0.4), transparent)" }} />
+          </motion.div>
+        </div>
+
+        {/* Bottom decorative row above CTA */}
+        <div className="absolute bottom-16 left-0 right-0 z-10 pointer-events-none flex items-center justify-center gap-6">
+          {[Star, Flame, Star].map((Icon, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9 + i * 0.15, duration: 0.7 }}
+            >
+              <Icon
+                style={{
+                  width: i === 1 ? 16 : 12,
+                  height: i === 1 ? 16 : 12,
+                  color: i === 1 ? "#cc0000" : "#c9a227",
+                  opacity: 0.45,
+                }}
+              />
+            </motion.div>
+          ))}
+        </div>
+
         {/* Animated gold sparks */}
         {[...Array(18)].map((_, i) => (
           <div
@@ -95,7 +188,7 @@ export default function Home() {
         ))}
 
         {/* ── Hero content — stacked column ── */}
-        <div className="relative z-10 flex-1 flex flex-col items-center justify-center pt-16 px-4 pb-4 w-full gap-4">
+        <div className="relative z-10 flex-1 flex flex-col items-center justify-center pt-24 px-4 pb-20 w-full gap-5">
 
           {/* LOGO */}
           <motion.div
@@ -108,11 +201,11 @@ export default function Home() {
               alt="Bawse Dawgs"
               className="mx-auto"
               style={{
-                height: "clamp(300px, 52vh, 580px)",
+                height: "clamp(380px, 68vh, 720px)",
                 width: "auto",
-                maxWidth: "92vw",
+                maxWidth: "96vw",
                 display: "block",
-                filter: "drop-shadow(0 0 70px rgba(201,162,39,0.40))",
+                filter: "drop-shadow(0 0 90px rgba(201,162,39,0.50))",
               }}
             />
           </motion.div>
