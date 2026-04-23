@@ -20,7 +20,7 @@ export default function Home() {
       {/* ── HERO ── */}
       <section
         ref={heroRef}
-        className="relative min-h-screen flex flex-col overflow-hidden text-center"
+        className="relative min-h-[82vh] flex flex-col overflow-hidden text-center"
         style={{ background: "#07060a" }}
       >
         {/* Grain overlay */}
@@ -95,7 +95,7 @@ export default function Home() {
         ))}
 
         {/* ── Hero content — stacked column ── */}
-        <div className="relative z-10 flex-1 flex flex-col items-center justify-center pt-24 px-4 pb-12 w-full gap-6">
+        <div className="relative z-10 flex-1 flex flex-col items-center justify-center pt-16 px-4 pb-4 w-full gap-4">
 
           {/* LOGO */}
           <motion.div
@@ -108,11 +108,11 @@ export default function Home() {
               alt="Bawse Dawgs"
               className="mx-auto"
               style={{
-                height: "clamp(260px, 45vh, 520px)",
+                height: "clamp(300px, 52vh, 580px)",
                 width: "auto",
-                maxWidth: "80vw",
+                maxWidth: "92vw",
                 display: "block",
-                filter: "drop-shadow(0 0 50px rgba(201,162,39,0.30))",
+                filter: "drop-shadow(0 0 70px rgba(201,162,39,0.40))",
               }}
             />
           </motion.div>
@@ -196,9 +196,9 @@ export default function Home() {
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                 style={{ background: "radial-gradient(ellipse 60% 60% at 50% 0%, rgba(201,162,39,0.07) 0%, transparent 70%)" }}
               />
-              <div className="font-heading text-[10px] tracking-[0.4em] text-white uppercase mb-4">
+              <h3 className="font-display text-3xl mb-4 tracking-wide text-white">
                 Premium Craft
-              </div>
+              </h3>
               <p className="text-white/35 font-sans leading-relaxed text-sm">
                 We source real ingredients and build every dawg with intention. No shortcuts, no fillers — just premium flavor stacked the way it was meant to be eaten.
               </p>
