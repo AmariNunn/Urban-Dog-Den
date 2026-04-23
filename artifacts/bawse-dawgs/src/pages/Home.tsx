@@ -95,7 +95,7 @@ export default function Home() {
         ))}
 
         {/* ── Hero content — stacked column ── */}
-        <div className="relative z-10 flex-1 flex flex-col items-center justify-center pt-8 px-4 pb-20 w-full gap-2">
+        <div className="relative z-10 flex-1 flex flex-col items-center justify-start pt-[6vh] px-4 pb-20 w-full gap-2">
 
           {/* LOGO */}
           <motion.div
