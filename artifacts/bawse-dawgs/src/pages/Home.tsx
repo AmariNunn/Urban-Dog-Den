@@ -1,7 +1,7 @@
 import { PageTransition } from "@/components/layout/PageTransition";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { ArrowRight, Flame, Star } from "lucide-react";
+import { ArrowRight, Flame } from "lucide-react";
 import { useRef } from "react";
 
 const STAR_POSITIONS = Array.from({ length: 60 }, (_, i) => ({
@@ -20,7 +20,7 @@ export default function Home() {
       {/* ── HERO ── */}
       <section
         ref={heroRef}
-        className="relative min-h-screen lg:h-screen flex flex-col overflow-hidden text-center"
+        className="relative min-h-screen flex flex-col overflow-hidden text-center"
         style={{ background: "#07060a" }}
       >
         {/* Grain overlay */}
@@ -36,7 +36,7 @@ export default function Home() {
           <rect width="100%" height="100%" filter="url(#grain)" />
         </svg>
 
-        {/* Star dots — deterministic positions */}
+        {/* Star dots */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           {STAR_POSITIONS.map(({ id, x, y, size, opacity }) => (
             <div
@@ -54,7 +54,7 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Radial gradients — gold center bloom + red corner accents */}
+        {/* Radial gradients */}
         <div
           className="absolute inset-0 z-0 pointer-events-none"
           style={{
@@ -94,99 +94,61 @@ export default function Home() {
           />
         ))}
 
-        {/* ── Hero content — fluid flex column, no hardcoded zones ── */}
-        <div className="relative z-10 flex-1 flex flex-col lg:flex-row items-center lg:items-center justify-start lg:justify-center pt-[calc(7rem-59px)] px-4 pb-4 w-full gap-5 lg:gap-12">
+        {/* ── Hero content — stacked column ── */}
+        <div className="relative z-10 flex-1 flex flex-col items-center justify-center pt-24 px-4 pb-12 w-full gap-6">
 
           {/* LOGO */}
-          <div className="flex items-center justify-center w-full max-h-[280px] overflow-hidden lg:max-h-none lg:overflow-visible lg:w-1/2 lg:flex-shrink-0">
-            <motion.div
-              initial={{ opacity: 0, y: 12, scale: 0.96 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <img
-                src={import.meta.env.BASE_URL + "bawse-dawgs-logo.png"}
-                alt="Bawse Dawgs"
-                className="mx-auto"
-                style={{
-                  height: "clamp(437px, 92vh, 1135px)",
-                  width: "auto",
-                  maxWidth: "88vw",
-                  display: "block",
-                  filter: "drop-shadow(0 0 50px rgba(201,162,39,0.30))",
-                }}
-              />
-            </motion.div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 12, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <img
+              src={import.meta.env.BASE_URL + "bawse-dawgs-logo.png"}
+              alt="Bawse Dawgs"
+              className="mx-auto"
+              style={{
+                height: "clamp(260px, 45vh, 520px)",
+                width: "auto",
+                maxWidth: "80vw",
+                display: "block",
+                filter: "drop-shadow(0 0 50px rgba(201,162,39,0.30))",
+              }}
+            />
+          </motion.div>
 
-          {/* TEXT + BUTTONS */}
-          <div className="flex flex-col items-center lg:items-start w-full max-w-lg mx-auto lg:mx-0 lg:max-w-none lg:w-1/2 gap-3">
+          {/* Tagline */}
+          <motion.p
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.25, duration: 0.7 }}
+            className="text-sm md:text-lg font-heading text-white/60 tracking-[0.25em] uppercase text-center"
+          >
+            100% BEEF. NO FILLERS. JUST FLAVOR.
+          </motion.p>
 
-            {/* Tagline */}
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.7 }}
-              className="text-center lg:text-left"
+          {/* CTA buttons */}
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+            className="flex flex-col sm:flex-row gap-3 w-full max-w-lg"
+          >
+            <Link
+              href="/menu"
+              data-testid="button-view-menu"
+              className="shimmer-btn-red px-10 py-4 rounded-sm uppercase tracking-widest font-bold flex items-center justify-center gap-3 flex-1"
             >
-              <p className="text-sm md:text-lg font-heading text-white/60 tracking-[0.25em] uppercase">
-                100% BEEF, NO FILLERS, NO SHORTCUTS, JUST FLAVOR
-              </p>
-              <p className="text-sm md:text-lg font-heading text-primary tracking-[0.25em] uppercase mt-1"
-                style={{ textShadow: "0 0 30px rgba(201,162,39,0.3)" }}>
-                JUST A GOOD OLD DOG
-              </p>
-            </motion.div>
-
-            {/* CTA buttons */}
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-              className="flex flex-col sm:flex-row gap-3 w-full"
+              View Menu
+            </Link>
+            <Link
+              href="/order"
+              data-testid="button-order-now"
+              className="shimmer-btn px-10 py-4 rounded-sm uppercase tracking-widest font-bold flex items-center justify-center gap-3 flex-1"
             >
-              <Link
-                href="/order"
-                data-testid="button-order-now"
-                className="shimmer-btn px-10 py-4 rounded-sm uppercase tracking-widest font-bold flex items-center justify-center gap-3 flex-1"
-              >
-                Order Now <ArrowRight className="w-5 h-5" />
-              </Link>
-              <Link
-                href="/menu"
-                data-testid="button-view-menu"
-                className="shimmer-btn-red px-10 py-4 rounded-sm uppercase tracking-widest font-bold flex items-center justify-center gap-3 flex-1"
-              >
-                View Menu
-              </Link>
-            </motion.div>
-
-            {/* Stat row */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.85, duration: 0.8 }}
-              className="flex items-center gap-5 md:gap-10 flex-wrap justify-center lg:justify-start"
-            >
-              {[
-                { label: "100% Beef", sub: "No fillers. Ever." },
-                { label: "Bawse Sauce", sub: "Made in-house." },
-                { label: "Chef-Driven", sub: "Built to stand out." },
-              ].map((stat, i) => (
-                <div key={i} className="text-center">
-                  <div
-                    className="font-display text-lg md:text-2xl text-primary tracking-wide"
-                    style={{ textShadow: "0 0 20px rgba(201,162,39,0.3)" }}
-                  >
-                    {stat.label}
-                  </div>
-                  <div className="text-[10px] text-white/30 font-heading tracking-widest uppercase mt-0.5">
-                    {stat.sub}
-                  </div>
-                </div>
-              ))}
-            </motion.div>
-          </div>
+              Order Now <ArrowRight className="w-5 h-5" />
+            </Link>
+          </motion.div>
 
         </div>
 
@@ -195,129 +157,6 @@ export default function Home() {
           className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-10"
           style={{ background: "linear-gradient(to bottom, transparent, #07060a)" }}
         />
-      </section>
-
-      {/* ── BRAND PILLARS ── */}
-      <section
-        className="py-28 relative z-10 border-t border-primary/10"
-        style={{ background: "#0a090f" }}
-      >
-        {/* Grain on this section too */}
-        <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.06]" aria-hidden>
-          <rect width="100%" height="100%" filter="url(#grain)" />
-        </svg>
-
-        <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <div className="text-center mb-20">
-            <p className="font-heading text-xs tracking-[0.4em] text-primary/60 uppercase mb-4">
-              What We Stand For
-            </p>
-            <h2 className="font-display text-5xl md:text-7xl mb-5">
-              <span className="text-primary">100% Beef.</span>{" "}
-              <span className="text-white">No Fillers.</span>
-            </h2>
-            <p className="text-xl font-heading text-white/30 uppercase tracking-widest">
-              No Shortcuts. Just Flavor.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                icon: Flame,
-                title: "Gourmet Swagger",
-                tag: "Premium Craft",
-                desc: "We source real ingredients and build every dawg with intention. No shortcuts, no fillers — just premium flavor stacked the way it was meant to be eaten.",
-              },
-              {
-                icon: Star,
-                title: "Street Certified",
-                tag: "Southern Soul",
-                desc: "Southern-inspired, street-certified. From Nashville heat to Carolina slaw — our flavor DNA runs deep. Every bite carries a story that hits different.",
-              },
-              {
-                icon: Star,
-                title: "BAWSE Execution",
-                tag: "Every. Single. Time.",
-                desc: "We serve fast, we serve loud, and every dawg leaves the kitchen perfect. No weak energy. No sloppy builds. The Bawse Rule is non-negotiable.",
-              },
-            ].map((pillar, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}
-                className="relative p-8 border border-white/[0.06] hover:border-primary/40 transition-all duration-500 group overflow-hidden"
-                style={{ background: "rgba(255,255,255,0.02)" }}
-              >
-                <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                  style={{
-                    background:
-                      "radial-gradient(ellipse 60% 60% at 50% 0%, rgba(201,162,39,0.07) 0%, transparent 70%)",
-                  }}
-                />
-                <div className="font-heading text-[10px] tracking-[0.4em] text-primary/50 uppercase mb-4">
-                  {pillar.tag}
-                </div>
-                <pillar.icon className="w-8 h-8 text-primary mb-5 group-hover:scale-110 transition-transform" />
-                <h3 className="font-display text-3xl mb-4 tracking-wide text-white">
-                  {pillar.title}
-                </h3>
-                <p className="text-white/35 font-sans leading-relaxed text-sm">{pillar.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Story pull section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="mt-20 grid md:grid-cols-2 gap-12 items-center border-t border-white/[0.05] pt-20"
-          >
-            <div>
-              <p className="font-heading text-xs tracking-[0.4em] text-secondary/70 uppercase mb-4">
-                The Origin
-              </p>
-              <h3 className="font-display text-4xl md:text-5xl text-white mb-6 leading-tight">
-                From the Streets <br />
-                <span className="text-primary">to the Grill.</span>
-              </h3>
-              <p className="text-white/35 font-sans leading-relaxed mb-4">
-                Bawse Dawgs was born from a simple idea — that street food deserves the same respect
-                as any fine dining experience. Real craft. Real ingredients. Real attitude. No
-                pretension, no compromise.
-              </p>
-              <p className="text-white/35 font-sans leading-relaxed">
-                We built this brand for the 21–45 crowd that loves premium food but hates the
-                pretension that usually comes with it. Instagram-worthy, belly-filling, and built
-                to make you come back the very next day.
-              </p>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { num: "5", label: "Signature Dawgs", color: "text-primary" },
-                { num: "2", label: "Classic Builds", color: "text-white" },
-                { num: "4", label: "Loaded Fries", color: "text-secondary" },
-                { num: "$0", label: "Shortcuts Taken", color: "text-primary" },
-              ].map((item, i) => (
-                <div
-                  key={i}
-                  className="p-6 border border-white/[0.06] text-center"
-                  style={{ background: "rgba(255,255,255,0.015)" }}
-                >
-                  <div className={`font-display text-5xl ${item.color} mb-2`}>{item.num}</div>
-                  <div className="text-white/30 text-xs font-heading tracking-widest uppercase">
-                    {item.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
       </section>
 
       {/* ── MARQUEE ── */}
@@ -329,6 +168,85 @@ export default function Home() {
               <Flame className="w-6 h-6 inline-block" />
             </span>
           ))}
+        </div>
+      </section>
+
+      {/* ── BRAND PILLARS ── */}
+      <section
+        className="py-28 relative z-10 border-t border-primary/10"
+        style={{ background: "#0a090f" }}
+      >
+        <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.06]" aria-hidden>
+          <rect width="100%" height="100%" filter="url(#grain)" />
+        </svg>
+
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <div className="grid md:grid-cols-3 gap-6">
+
+            {/* Pillar 1 — Premium Craft */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0 }}
+              className="relative p-8 border border-white/[0.06] hover:border-primary/40 transition-all duration-500 group overflow-hidden"
+              style={{ background: "rgba(255,255,255,0.02)" }}
+            >
+              <div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                style={{ background: "radial-gradient(ellipse 60% 60% at 50% 0%, rgba(201,162,39,0.07) 0%, transparent 70%)" }}
+              />
+              <div className="font-heading text-[10px] tracking-[0.4em] text-white uppercase mb-4">
+                Premium Craft
+              </div>
+              <p className="text-white/35 font-sans leading-relaxed text-sm">
+                We source real ingredients and build every dawg with intention. No shortcuts, no fillers — just premium flavor stacked the way it was meant to be eaten.
+              </p>
+            </motion.div>
+
+            {/* Pillar 2 — Street Certified */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.15 }}
+              className="relative p-8 border border-white/[0.06] hover:border-primary/40 transition-all duration-500 group overflow-hidden"
+              style={{ background: "rgba(255,255,255,0.02)" }}
+            >
+              <div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                style={{ background: "radial-gradient(ellipse 60% 60% at 50% 0%, rgba(201,162,39,0.07) 0%, transparent 70%)" }}
+              />
+              <h3 className="font-display text-3xl mb-4 tracking-wide text-white">
+                Street Certified
+              </h3>
+              <p className="text-white/35 font-sans leading-relaxed text-sm">
+                Our flavor DNA runs deep. Every bite carries a story that hits different.
+              </p>
+            </motion.div>
+
+            {/* Pillar 3 — BAWSE Execution */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="relative p-8 border border-white/[0.06] hover:border-primary/40 transition-all duration-500 group overflow-hidden"
+              style={{ background: "rgba(255,255,255,0.02)" }}
+            >
+              <div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                style={{ background: "radial-gradient(ellipse 60% 60% at 50% 0%, rgba(201,162,39,0.07) 0%, transparent 70%)" }}
+              />
+              <h3 className="font-display text-3xl mb-4 tracking-wide text-white">
+                BAWSE Execution
+              </h3>
+              <p className="text-white/35 font-sans leading-relaxed text-sm">
+                We serve fast, we serve loud, and every dawg leaves the kitchen perfect. No weak energy. No sloppy builds. The Bawse Rule is non-negotiable.
+              </p>
+            </motion.div>
+
+          </div>
         </div>
       </section>
 
