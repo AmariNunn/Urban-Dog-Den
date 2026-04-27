@@ -113,7 +113,7 @@ export default function Home() {
                 width: "auto",
                 maxWidth: "96vw",
                 display: "block",
-                filter: "drop-shadow(0 0 90px rgba(201,162,39,0.50))",
+                filter: "drop-shadow(0 4px 24px rgba(201,162,39,0.18))",
               }}
             />
           </motion.div>
@@ -182,7 +182,7 @@ export default function Home() {
         </svg>
 
         <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
 
             {/* Pillar 1 — Premium Craft */}
             <motion.div
@@ -223,27 +223,6 @@ export default function Home() {
               </h3>
               <p className="text-white/35 font-sans leading-relaxed text-sm">
                 Our flavor DNA runs deep. Every bite carries a story that hits different.
-              </p>
-            </motion.div>
-
-            {/* Pillar 3 — BAWSE Execution */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="relative p-8 border border-white/[0.06] hover:border-primary/40 transition-all duration-500 group overflow-hidden"
-              style={{ background: "rgba(255,255,255,0.02)" }}
-            >
-              <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                style={{ background: "radial-gradient(ellipse 60% 60% at 50% 0%, rgba(201,162,39,0.07) 0%, transparent 70%)" }}
-              />
-              <h3 className="font-display text-3xl mb-4 tracking-wide text-white">
-                BAWSE Execution
-              </h3>
-              <p className="text-white/35 font-sans leading-relaxed text-sm">
-                We serve fast, we serve loud, and every dawg leaves the kitchen perfect. No weak energy. No sloppy builds. The Bawse Rule is non-negotiable.
               </p>
             </motion.div>
 
