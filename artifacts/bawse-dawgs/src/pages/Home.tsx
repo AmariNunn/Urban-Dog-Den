@@ -23,76 +23,8 @@ export default function Home() {
         className="relative min-h-[100vh] flex flex-col overflow-hidden text-center"
         style={{ background: "#000000" }}
       >
-        {/* Grain overlay */}
-        <svg
-          className="absolute inset-0 w-full h-full pointer-events-none z-0"
-          style={{ opacity: 0.09 }}
-          aria-hidden
-        >
-          <filter id="grain">
-            <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="4" stitchTiles="stitch" />
-            <feColorMatrix type="saturate" values="0" />
-          </filter>
-          <rect width="100%" height="100%" filter="url(#grain)" />
-        </svg>
-
-        {/* Star dots */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          {STAR_POSITIONS.map(({ id, x, y, size, opacity }) => (
-            <div
-              key={id}
-              className="absolute rounded-full"
-              style={{
-                left: `${x}%`,
-                top: `${y}%`,
-                width: size,
-                height: size,
-                background: id % 4 === 0 ? "#c9a227" : id % 4 === 1 ? "#cc0000" : "#f5c542",
-                opacity,
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Radial gradients */}
-        <div
-          className="absolute inset-0 z-0 pointer-events-none"
-          style={{
-            background: [
-              "radial-gradient(ellipse 70% 55% at 50% 40%, rgba(201,162,39,0.13) 0%, transparent 70%)",
-              "radial-gradient(ellipse 40% 30% at 15% 80%, rgba(204,0,0,0.10) 0%, transparent 60%)",
-              "radial-gradient(ellipse 35% 25% at 85% 15%, rgba(204,0,0,0.08) 0%, transparent 60%)",
-              "radial-gradient(ellipse 60% 40% at 50% 100%, rgba(139,90,10,0.12) 0%, transparent 70%)",
-            ].join(", "),
-          }}
-        />
-
-        {/* Vignette */}
-        <div
-          className="absolute inset-0 z-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 100% 100% at 50% 50%, transparent 40%, rgba(0,0,0,0.85) 100%)",
-          }}
-        />
-
-        {/* Animated gold sparks */}
-        {[...Array(18)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute rounded-full animate-spark pointer-events-none z-0"
-            style={{
-              width: i % 3 === 0 ? 2 : 1,
-              height: i % 3 === 0 ? 2 : 1,
-              background: i % 2 === 0 ? "#c9a227" : "#cc0000",
-              left: `${((i * 53.7) % 100)}%`,
-              top: `${((i * 79.13) % 100)}%`,
-              animationDelay: `${(i * 0.4) % 3}s`,
-              animationDuration: `${2.5 + (i % 3) * 0.7}s`,
-              opacity: 0.6,
-            }}
-          />
-        ))}
+        {/* Background */}
+        <div className="absolute inset-0 z-0 pointer-events-none" style={{ background: "#000000" }} />
 
         {/* ── Hero content — stacked column ── */}
         <div className="relative z-10 flex-1 flex flex-col items-center justify-center pt-[6vh] px-4 pb-20 w-full gap-6">

@@ -19,14 +19,8 @@ export default function About() {
     <PageTransition>
       <div style={{ background: "#000000" }} className="min-h-screen relative">
 
-        {/* Grain texture */}
-        <svg className="fixed inset-0 w-full h-full pointer-events-none opacity-[0.06] z-0" aria-hidden>
-          <filter id="grain-about">
-            <feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="4" stitchTiles="stitch" />
-            <feColorMatrix type="saturate" values="0" />
-          </filter>
-          <rect width="100%" height="100%" filter="url(#grain-about)" />
-        </svg>
+        {/* Background */}
+        <div className="absolute inset-0 z-0 pointer-events-none" style={{ background: "#000000" }} />
 
         {/* ── HERO ── */}
         <section className="relative z-10 min-h-screen flex flex-col items-center justify-center px-5 text-center overflow-hidden">
