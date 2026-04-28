@@ -6,8 +6,6 @@ const CHIPS = [
   "Brisket Smoked Sausage",
   "Slow-Smoked",
   "Southern Twist",
-  "Grilled to Perfection",
-  "High-Quality Ingredients",
 ];
 
 const GOLD = "#c9a227";
