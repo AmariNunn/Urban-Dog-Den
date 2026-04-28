@@ -95,23 +95,21 @@ export default function Home() {
         ))}
 
         {/* ── Hero content — stacked column ── */}
-        <div className="relative z-10 flex-1 flex flex-col items-center justify-start pt-[6vh] px-4 pb-20 w-full gap-2">
+        <div className="relative z-10 flex-1 flex flex-col items-center justify-center pt-[6vh] px-4 pb-20 w-full gap-6">
 
           {/* LOGO */}
           <motion.div
             initial={{ opacity: 0, y: 12, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-            style={{ marginBottom: "calc(-22vh)" }}
           >
             <img
               src={import.meta.env.BASE_URL + "bawse-dawgs-logo-new.png"}
               alt="Bawse Dawgs"
               className="mx-auto"
               style={{
-                height: "clamp(494px, 88vh, 936px)",
-                width: "auto",
-                maxWidth: "96vw",
+                width: "clamp(240px, 62vw, 480px)",
+                height: "auto",
                 display: "block",
                 filter: "drop-shadow(0 4px 32px rgba(201,162,39,0.28))",
               }}
