@@ -72,7 +72,7 @@ export default function Home() {
           className="absolute inset-0 z-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse 100% 100% at 50% 50%, transparent 40%, rgba(7,6,10,0.85) 100%)",
+              "radial-gradient(ellipse 100% 100% at 50% 50%, transparent 40%, rgba(0,0,0,0.85) 100%)",
           }}
         />
 
@@ -104,7 +104,7 @@ export default function Home() {
             transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
           >
             <img
-              src={import.meta.env.BASE_URL + "bawse-dawgs-logo-new.png"}
+              src={import.meta.env.BASE_URL + "bawse_dawgs_final_1777411777939.png"}
               alt="Bawse Dawgs"
               className="mx-auto"
               style={{
