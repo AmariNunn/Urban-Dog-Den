@@ -21,7 +21,7 @@ export default function Home() {
       <section
         ref={heroRef}
         className="relative min-h-[100vh] flex flex-col overflow-hidden text-center"
-        style={{ background: "#07060a" }}
+        style={{ background: "#000000" }}
       >
         {/* Grain overlay */}
         <svg
@@ -105,7 +105,7 @@ export default function Home() {
             style={{ marginBottom: "calc(-22vh)" }}
           >
             <img
-              src={import.meta.env.BASE_URL + "bawse-dawgs-logo.png"}
+              src={import.meta.env.BASE_URL + "bawse-dawgs-logo-new.png"}
               alt="Bawse Dawgs"
               className="mx-auto"
               style={{
@@ -113,7 +113,7 @@ export default function Home() {
                 width: "auto",
                 maxWidth: "96vw",
                 display: "block",
-                filter: "drop-shadow(0 4px 24px rgba(201,162,39,0.18))",
+                filter: "drop-shadow(0 4px 32px rgba(201,162,39,0.28))",
               }}
             />
           </motion.div>
@@ -156,7 +156,7 @@ export default function Home() {
         {/* Bottom fade */}
         <div
           className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-10"
-          style={{ background: "linear-gradient(to bottom, transparent, #07060a)" }}
+          style={{ background: "linear-gradient(to bottom, transparent, #000000)" }}
         />
       </section>
 
@@ -175,7 +175,7 @@ export default function Home() {
       {/* ── BRAND PILLARS ── */}
       <section
         className="py-28 relative z-10 border-t border-primary/10"
-        style={{ background: "#0a090f" }}
+        style={{ background: "#000000" }}
       >
         <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.06]" aria-hidden>
           <rect width="100%" height="100%" filter="url(#grain)" />
