@@ -1,5 +1,6 @@
 import { PageTransition } from "@/components/layout/PageTransition";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const CHIPS = [
   "Nashville, TN",
@@ -12,6 +13,8 @@ const GOLD = "#c9a227";
 const RED = "#cc0000";
 
 export default function About() {
+  const [chipsPaused, setChipsPaused] = useState(false);
+
   return (
     <PageTransition>
       <div style={{ background: "#000000" }} className="min-h-screen relative">
@@ -110,17 +113,27 @@ export default function About() {
         {/* Gold divider */}
         <div className="w-full h-px" style={{ background: `linear-gradient(to right, transparent, ${GOLD}, transparent)` }} />
 
-        {/* ── CHIP STRIP ── */}
-        <section className="relative z-10 py-6 overflow-hidden" style={{ background: "#000" }}>
-          <div className="flex gap-3 px-5 overflow-x-auto scrollbar-hide whitespace-nowrap md:flex-wrap md:justify-center">
-            {CHIPS.map((chip, i) => (
-              <motion.span
-                key={chip}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.07 }}
-                className="inline-flex items-center flex-shrink-0 px-4 py-2 font-heading text-[11px] tracking-[0.3em] uppercase rounded-sm"
+        {/* ── CHIP MARQUEE ── */}
+        <section
+          className="relative z-10 py-5 overflow-hidden"
+          style={{ background: "#000" }}
+          onMouseEnter={() => setChipsPaused(true)}
+          onMouseLeave={() => setChipsPaused(false)}
+          onTouchStart={() => setChipsPaused(true)}
+          onTouchEnd={() => setChipsPaused(false)}
+        >
+          <div
+            className="flex gap-5 whitespace-nowrap"
+            style={{
+              animation: "chips-marquee 18s linear infinite",
+              animationPlayState: chipsPaused ? "paused" : "running",
+              width: "max-content",
+            }}
+          >
+            {[...CHIPS, ...CHIPS, ...CHIPS].map((chip, i) => (
+              <span
+                key={i}
+                className="inline-flex items-center flex-shrink-0 px-5 py-2.5 font-heading text-[11px] tracking-[0.3em] uppercase rounded-sm"
                 style={{
                   border: `1px solid ${GOLD}55`,
                   color: GOLD,
@@ -128,7 +141,7 @@ export default function About() {
                 }}
               >
                 {chip}
-              </motion.span>
+              </span>
             ))}
           </div>
         </section>
@@ -237,6 +250,10 @@ export default function About() {
         <style>{`
           .scrollbar-hide::-webkit-scrollbar { display: none; }
           .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+          @keyframes chips-marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-33.333%); }
+          }
         `}</style>
 
       </div>
