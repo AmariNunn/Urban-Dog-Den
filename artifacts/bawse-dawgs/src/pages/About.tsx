@@ -96,12 +96,12 @@ export default function About() {
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 0.8 }}
             className="absolute bottom-10 flex flex-col items-center gap-2"
+            aria-hidden
           >
-            <span className="font-heading text-[9px] tracking-[0.4em] uppercase" style={{ color: `${GOLD}60` }}>Scroll</span>
             <motion.div
               animate={{ y: [0, 7, 0] }}
               transition={{ repeat: Infinity, duration: 1.4, ease: "easeInOut" }}
-              className="w-px h-8"
+              className="w-px h-10"
               style={{ background: `linear-gradient(to bottom, ${GOLD}80, transparent)` }}
             />
           </motion.div>
