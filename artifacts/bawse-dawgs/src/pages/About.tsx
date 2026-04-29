@@ -24,7 +24,7 @@ export default function About() {
 
   return (
     <PageTransition>
-      <div style={{ background: "#000000" }} className="min-h-screen relative">
+      <div style={{ background: "#000000" }} className="min-h-screen relative pt-24">
 
         {/* ── GOLD MARQUEE BAR (top) ── */}
         <section
