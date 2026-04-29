@@ -2,251 +2,239 @@ import { PageTransition } from "@/components/layout/PageTransition";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-const CHIPS = [
+const MARQUEE_ITEMS = [
   "Nashville, TN",
   "Brisket Smoked Sausage",
   "Slow-Smoked",
   "Southern Twist",
 ];
 
+const STATIC_CHIPS = [
+  "NASHVILLE, TN",
+  "SLOW-SMOKED",
+  "BRISKET SAUSAGE",
+  "SOUTHERN TWIST",
+];
+
 const GOLD = "#c9a227";
 const RED = "#cc0000";
 
 export default function About() {
-  const [chipsPaused, setChipsPaused] = useState(false);
+  const [marqueePaused, setMarqueePaused] = useState(false);
 
   return (
     <PageTransition>
       <div style={{ background: "#000000" }} className="min-h-screen relative">
 
-        {/* Background */}
-        <div className="absolute inset-0 z-0 pointer-events-none" style={{ background: "#000000" }} />
-
-        {/* ── HERO ── */}
-        <section className="relative z-10 min-h-screen flex flex-col items-center justify-center px-5 text-center overflow-hidden">
-
-          {/* Strong gold glow behind hero */}
-          <div className="absolute inset-0 pointer-events-none"
-            style={{
-              background: [
-                "radial-gradient(ellipse 80% 55% at 50% 45%, rgba(201,162,39,0.18) 0%, transparent 65%)",
-                "radial-gradient(ellipse 40% 25% at 10% 80%, rgba(204,0,0,0.14) 0%, transparent 55%)",
-                "radial-gradient(ellipse 35% 20% at 90% 20%, rgba(204,0,0,0.10) 0%, transparent 55%)",
-              ].join(", "),
-            }}
-          />
-
-          {/* Nashville eyebrow */}
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex items-center gap-3 mb-7"
-          >
-            <div className="h-px w-10 md:w-16" style={{ background: `linear-gradient(to right, transparent, ${GOLD})` }} />
-            <span className="font-heading text-[11px] tracking-[0.5em] uppercase" style={{ color: GOLD }}>
-              Nashville, TN
-            </span>
-            <div className="h-px w-10 md:w-16" style={{ background: `linear-gradient(to left, transparent, ${GOLD})` }} />
-          </motion.div>
-
-          {/* Main headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display uppercase tracking-tighter leading-[0.88] text-white w-full"
-            style={{ fontSize: "clamp(3rem, 13vw, 9rem)" }}
-          >
-            LUXURY
-            <br />
-            <span style={{ color: GOLD, textShadow: `0 0 60px rgba(201,162,39,0.5), 0 0 120px rgba(201,162,39,0.25)` }}>
-              HOT DAWGS
-            </span>
-            <br />
-            <span className="text-white/80">SOUTHERN TWIST</span>
-          </motion.h1>
-
-          {/* Red accent rule */}
-          <motion.div
-            initial={{ scaleX: 0, opacity: 0 }}
-            animate={{ scaleX: 1, opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="mt-8 mb-7 h-[3px] w-24 rounded-full"
-            style={{ background: RED, transformOrigin: "center" }}
-          />
-
-          {/* Sub-tagline */}
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-            className="font-heading text-base md:text-xl tracking-[0.22em] uppercase"
-            style={{ color: "rgba(255,255,255,0.45)" }}
-          >
-            Slow-Smoked. Grilled to Perfection. Built Different.
-          </motion.p>
-
-          {/* Scroll indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 0.8 }}
-            className="absolute bottom-10 flex flex-col items-center gap-2"
-            aria-hidden
-          >
-            <motion.div
-              animate={{ y: [0, 7, 0] }}
-              transition={{ repeat: Infinity, duration: 1.4, ease: "easeInOut" }}
-              className="w-px h-10"
-              style={{ background: `linear-gradient(to bottom, ${GOLD}80, transparent)` }}
-            />
-          </motion.div>
-        </section>
-
-        {/* Gold divider */}
-        <div className="w-full h-px" style={{ background: `linear-gradient(to right, transparent, ${GOLD}, transparent)` }} />
-
-        {/* ── CHIP MARQUEE ── */}
+        {/* ── GOLD MARQUEE BAR (top) ── */}
         <section
-          className="relative z-10 py-5 overflow-hidden"
-          style={{ background: "#000" }}
-          onMouseEnter={() => setChipsPaused(true)}
-          onMouseLeave={() => setChipsPaused(false)}
-          onTouchStart={() => setChipsPaused(true)}
-          onTouchEnd={() => setChipsPaused(false)}
+          className="relative z-10 overflow-hidden"
+          style={{ background: GOLD }}
+          onMouseEnter={() => setMarqueePaused(true)}
+          onMouseLeave={() => setMarqueePaused(false)}
+          onTouchStart={() => setMarqueePaused(true)}
+          onTouchEnd={() => setMarqueePaused(false)}
         >
           <div
-            className="flex gap-5 whitespace-nowrap"
+            className="flex whitespace-nowrap py-3"
             style={{
-              animation: "chips-marquee 18s linear infinite",
-              animationPlayState: chipsPaused ? "paused" : "running",
+              animation: "marquee-scroll 18s linear infinite",
+              animationPlayState: marqueePaused ? "paused" : "running",
               width: "max-content",
             }}
           >
-            {[...CHIPS, ...CHIPS, ...CHIPS].map((chip, i) => (
+            {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (
               <span
                 key={i}
-                className="inline-flex items-center flex-shrink-0 px-5 py-2.5 font-heading text-[11px] tracking-[0.3em] uppercase rounded-sm"
-                style={{
-                  border: `1px solid ${GOLD}55`,
-                  color: GOLD,
-                  background: "rgba(201,162,39,0.05)",
-                }}
+                className="inline-flex items-center flex-shrink-0 font-heading text-[11px] tracking-[0.3em] uppercase"
+                style={{ color: "#000" }}
               >
-                {chip}
+                {item}
+                <span className="mx-4 text-black/50">·</span>
               </span>
             ))}
           </div>
         </section>
 
-        {/* Gold divider */}
-        <div className="w-full h-px" style={{ background: `linear-gradient(to right, transparent, ${GOLD}, transparent)` }} />
-
-        {/* ── BRAND STORY ── */}
-        <section className="relative z-10 py-16 md:py-24 px-5" style={{ background: "#000" }}>
-
-          {/* Subtle red glow left */}
-          <div className="absolute left-0 top-0 bottom-0 w-1/2 pointer-events-none"
-            style={{ background: "radial-gradient(ellipse 60% 70% at 0% 50%, rgba(204,0,0,0.06) 0%, transparent 60%)" }} />
-
-          <div className="max-w-3xl mx-auto relative z-10">
-
-            {/* Section label */}
-            <motion.p
-              initial={{ opacity: 0, x: -16 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="font-heading text-[10px] tracking-[0.5em] uppercase mb-8"
-              style={{ color: `${GOLD}70` }}
+        {/* ── HERO ── */}
+        <section
+          className="relative z-10 flex items-center overflow-hidden"
+          style={{ background: "#000", minHeight: "52vh", paddingTop: "4rem", paddingBottom: "4rem" }}
+        >
+          {/* Vertical sidebar text */}
+          <div
+            className="hidden md:flex absolute left-0 top-0 bottom-0 items-center justify-center"
+            style={{ width: "3.5rem" }}
+          >
+            <span
+              className="font-heading text-[9px] tracking-[0.45em] uppercase whitespace-nowrap"
+              style={{
+                color: `${GOLD}80`,
+                transform: "rotate(-90deg)",
+                transformOrigin: "center center",
+              }}
             >
-              Our Story
+              ABOUT · OUR STORY
+            </span>
+          </div>
+
+          {/* Hero content — left-aligned */}
+          <div className="w-full px-8 md:pl-20 md:pr-12">
+
+            {/* Nashville eyebrow — centered */}
+            <motion.p
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55 }}
+              className="font-heading text-[11px] tracking-[0.5em] uppercase text-center mb-6"
+              style={{ color: GOLD }}
+            >
+              NASHVILLE, TN
             </motion.p>
 
-            {/* Paragraph 1 */}
+            {/* Headline */}
+            <motion.h1
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="font-display uppercase tracking-tighter leading-[0.88]"
+              style={{ fontSize: "clamp(3.2rem, 11vw, 8.5rem)" }}
+            >
+              <span className="text-white block">GOOD DAWGS.</span>
+              <span style={{ color: GOLD }} className="block">DONE DIFFERENT.</span>
+            </motion.h1>
+
+            {/* Red underline */}
+            <motion.div
+              initial={{ scaleX: 0, opacity: 0 }}
+              animate={{ scaleX: 1, opacity: 1 }}
+              transition={{ delay: 0.38, duration: 0.55 }}
+              className="mt-6 h-[3px]"
+              style={{
+                background: RED,
+                transformOrigin: "left center",
+                width: "clamp(5rem, 18vw, 14rem)",
+              }}
+            />
+          </div>
+        </section>
+
+        {/* ── TWO-COLUMN CONTENT ── */}
+        <section className="relative z-10 py-16 md:py-24 px-8 md:px-16" style={{ background: "#000" }}>
+          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+
+            {/* Left: WHO WE ARE */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="mb-8 pl-5 md:pl-7"
-              style={{ borderLeft: `3px solid ${GOLD}` }}
+              transition={{ duration: 0.6 }}
             >
-              <p className="font-sans leading-relaxed text-lg md:text-xl" style={{ color: "rgba(255,255,255,0.88)" }}>
-                <span className="font-bold" style={{ color: GOLD }}>Bawse Dawgs</span> is a luxury hot dawg brand based in Nashville, TN, specializing in gourmet hot dawgs with a southern twist. Known for our signature{" "}
-                <span className="font-semibold" style={{ color: GOLD }}>"brisket smoked sausage"</span>, each dawg is slow-smoked, grilled to perfection, and topped with high-quality ingredients.
+              <h2
+                className="font-heading text-[11px] tracking-[0.45em] uppercase mb-3"
+                style={{ color: GOLD, fontVariant: "small-caps" }}
+              >
+                WHO WE ARE
+              </h2>
+              <div className="w-full h-px mb-7" style={{ background: GOLD }} />
+              <p className="font-sans text-sm md:text-base leading-relaxed mb-5" style={{ color: "rgba(255,255,255,0.82)" }}>
+                Bawse Dawgs is a luxury hot dawg brand based in Nashville, TN, specializing in gourmet hot dawgs with a southern twist.
+              </p>
+              <p className="font-sans text-sm md:text-base leading-relaxed" style={{ color: "rgba(255,255,255,0.82)" }}>
+                Known for our signature brisket smoked sausage, each dawg is slow-smoked, grilled to perfection, and topped with high-quality ingredients.
               </p>
             </motion.div>
 
-            {/* Paragraph 2 */}
+            {/* Right: OUR PHILOSOPHY */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="pl-5 md:pl-7"
-              style={{ borderLeft: `3px solid ${RED}` }}
+              transition={{ duration: 0.6, delay: 0.12 }}
             >
-              <p className="font-sans leading-relaxed text-lg md:text-xl" style={{ color: "rgba(255,255,255,0.88)" }}>
-                Bawse Dawgs was created to elevate a classic staple into an unforgettable memory that is built from{" "}
-                <span className="font-semibold" style={{ color: GOLD }}>southern roots</span>,{" "}
-                <span className="font-semibold" style={{ color: GOLD }}>bold flavors</span>, and a whole lotta attitude.
+              <h2
+                className="font-heading text-[11px] tracking-[0.45em] uppercase mb-3"
+                style={{ color: GOLD, fontVariant: "small-caps" }}
+              >
+                OUR PHILOSOPHY
+              </h2>
+              <div className="w-full h-px mb-7" style={{ background: GOLD }} />
+              <p className="font-sans text-sm md:text-base leading-relaxed mb-5" style={{ color: "rgba(255,255,255,0.82)" }}>
+                Bawse Dawgs was created to elevate a classic staple into an unforgettable memory built from southern roots, bold flavors, and a whole lotta attitude.
+              </p>
+              <p className="font-sans text-sm md:text-base leading-relaxed" style={{ color: "rgba(255,255,255,0.82)" }}>
+                This isn't your average hot dog — this is a movement. A statement. A whole new standard.
               </p>
             </motion.div>
 
           </div>
         </section>
 
-        {/* Gold divider */}
-        <div className="w-full h-px" style={{ background: `linear-gradient(to right, transparent, ${GOLD}, transparent)` }} />
+        {/* Gold solid border */}
+        <div className="w-full" style={{ height: "1px", background: GOLD }} />
 
-        {/* ── QUOTE ── */}
-        <section className="relative z-10 py-20 md:py-32 px-5 overflow-hidden" style={{ background: "#000" }}>
+        {/* ── QUOTE BLOCK ── */}
+        <section className="relative z-10 py-20 md:py-28 px-8" style={{ background: "#000" }}>
 
-          {/* Massive gold glow */}
-          <div className="absolute inset-0 pointer-events-none"
-            style={{ background: "radial-gradient(ellipse 90% 70% at 50% 50%, rgba(201,162,39,0.12) 0%, transparent 65%)" }} />
+          <div className="text-center max-w-5xl mx-auto">
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="relative z-10 text-center max-w-5xl mx-auto"
-          >
+            {/* Solid gold top border */}
+            <div className="w-full mb-10 md:mb-14" style={{ height: "1px", background: GOLD }} />
 
-            {/* Top border */}
-            <div className="w-full h-[2px] mb-10 md:mb-14" style={{ background: `linear-gradient(to right, transparent, ${GOLD}, transparent)` }} />
-
-            {/* Lead-in */}
-            <p className="font-heading text-[11px] tracking-[0.55em] uppercase mb-6 md:mb-10"
-              style={{ color: GOLD }}>
-              This isn't your average hot dog
-            </p>
-
-            {/* The quote */}
-            <p
-              className="font-display uppercase leading-[0.88] text-white"
-              style={{
-                fontSize: "clamp(2.8rem, 11vw, 8rem)",
-                textShadow: `0 0 80px rgba(201,162,39,0.35), 0 0 160px rgba(201,162,39,0.15)`,
-              }}
+            {/* Eyebrow */}
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="font-heading text-[11px] tracking-[0.55em] uppercase mb-6 md:mb-10"
+              style={{ color: GOLD, fontVariant: "small-caps" }}
             >
-              "JUST A GOOD<br className="hidden md:block" /> OL' DAWG"
-            </p>
+              THIS ISN'T YOUR AVERAGE HOT DOG
+            </motion.p>
 
-            {/* Bottom border */}
-            <div className="w-full h-[2px] mt-10 md:mt-14" style={{ background: `linear-gradient(to right, transparent, ${GOLD}, transparent)` }} />
+            {/* Quote */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="font-display uppercase leading-[0.88] text-white"
+              style={{ fontSize: "clamp(2.8rem, 11vw, 8rem)" }}
+            >
+              JUST A GOOD OL' DAWG
+            </motion.p>
 
-          </motion.div>
+            {/* Solid gold bottom border */}
+            <div className="w-full mt-10 md:mt-14" style={{ height: "1px", background: GOLD }} />
+
+          </div>
+        </section>
+
+        {/* Gold solid border */}
+        <div className="w-full" style={{ height: "1px", background: GOLD }} />
+
+        {/* ── STATIC 4-CHIP ROW ── */}
+        <section className="relative z-10 py-6 px-8" style={{ background: "#000" }}>
+          <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
+            {STATIC_CHIPS.map((chip) => (
+              <div
+                key={chip}
+                className="flex items-center justify-center py-3 px-4 font-heading text-[10px] tracking-[0.3em] uppercase text-center"
+                style={{
+                  border: `1px solid ${GOLD}`,
+                  color: GOLD,
+                }}
+              >
+                {chip}
+              </div>
+            ))}
+          </div>
         </section>
 
         <style>{`
-          .scrollbar-hide::-webkit-scrollbar { display: none; }
-          .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-          @keyframes chips-marquee {
+          @keyframes marquee-scroll {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-33.333%); }
+            100% { transform: translateX(-25%); }
           }
         `}</style>
 
