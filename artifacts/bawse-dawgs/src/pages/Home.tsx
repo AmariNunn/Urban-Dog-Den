@@ -73,13 +73,6 @@ export default function Home() {
             >
               View Menu
             </Link>
-            <Link
-              href="/order"
-              data-testid="button-order-now"
-              className="shimmer-btn px-10 py-4 rounded-sm uppercase tracking-widest font-bold flex items-center justify-center gap-3 flex-1"
-            >
-              Order Now <ArrowRight className="w-5 h-5" />
-            </Link>
           </motion.div>
 
         </div>
