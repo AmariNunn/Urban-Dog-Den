@@ -34,15 +34,16 @@ export default function Home() {
             initial={{ opacity: 0, y: 12, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+            className="flex justify-center w-full"
           >
             <img
               src={import.meta.env.BASE_URL + "bawse-dawgs-logo-new2.png"}
               alt="Bawse Dawgs"
-              className="mx-auto"
               style={{
-                width: "clamp(240px, 62vw, 480px)",
+                width: "clamp(300px, 77.5vw, 600px)",
                 height: "auto",
                 display: "block",
+                margin: "0 auto",
                 filter: "drop-shadow(0 4px 32px rgba(201,162,39,0.28))",
               }}
             />
