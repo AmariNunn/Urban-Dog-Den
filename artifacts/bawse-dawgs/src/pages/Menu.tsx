@@ -162,6 +162,7 @@ export default function Menu() {
                 <div className="flex items-end justify-between mb-5 pb-3 border-b border-white/[0.07]">
                   <div>
                     <h2 className="font-display text-3xl md:text-4xl text-primary tracking-wide">{section.category}</h2>
+                    <p className="font-heading text-xs text-white/25 uppercase tracking-widest mt-1">{section.subtitle}</p>
                   </div>
                 </div>
 
