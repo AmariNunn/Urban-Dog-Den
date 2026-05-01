@@ -142,7 +142,7 @@ export default function Menu() {
             <div>
               <span className="font-display text-xl text-secondary tracking-wide">MAKE ANY DAWG A COMBO</span>
             </div>
-            <span className="font-display text-3xl text-secondary">+$5</span>
+            <span className="font-display text-3xl text-secondary">$5</span>
           </div>
 
           {/* Menu sections */}
