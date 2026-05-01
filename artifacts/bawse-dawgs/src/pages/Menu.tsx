@@ -136,13 +136,17 @@ export default function Menu() {
             </div>
           </div>
 
-          {/* Combo callout bar */}
-          <div className="mb-10 px-6 py-4 border border-secondary/30 flex flex-wrap items-center justify-between gap-4"
+          {/* Combo + Brisket callout bar */}
+          <div className="mb-10 px-6 py-4 border border-secondary/30 flex flex-col gap-3"
             style={{ background: "rgba(204,0,0,0.06)" }}>
-            <div>
+            <div className="flex flex-wrap items-center justify-between gap-4">
               <span className="font-display text-xl text-secondary tracking-wide">MAKE ANY DAWG A COMBO</span>
+              <span className="font-display text-3xl text-secondary">$5</span>
             </div>
-            <span className="font-display text-3xl text-secondary">$5</span>
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <span className="font-display text-xl text-secondary tracking-wide">MAKE ANY DAWG A BRISKET DAWG</span>
+              <span className="font-display text-3xl text-secondary">+$3</span>
+            </div>
           </div>
 
           {/* Menu sections */}
