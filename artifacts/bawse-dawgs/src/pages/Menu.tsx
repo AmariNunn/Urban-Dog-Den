@@ -54,10 +54,10 @@ const MENU_DATA = [
   {
     category: "SIDES",
     subtitle: "The Best",
-    tag: "KEEP IT GOING",
+    tag: "",
     items: [
       { id: "chips", name: "Chips", desc: "", price: 3, spicy: false },
-      { id: "elote_cup", name: "Elote Cup", desc: "Saturday only", price: 5, spicy: false },
+      { id: "elote_cup", name: "Elote Cup", desc: "Friday & Saturday only", price: 5, spicy: false },
     ],
   },
   {
