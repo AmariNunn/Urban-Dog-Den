@@ -45,7 +45,7 @@ const MENU_DATA = [
       {
         id: "byo",
         name: "Base Dawg",
-        desc: "$3 — Make it a Brisket Dawg\n$0.50 — Onions, Grilled Onions, Slaw, Jalapeños\n$1 — Chili, Cheese, Bacon, Bawse Sawce\n$2 — Chopped Brisket",
+        desc: "$3 — Make it a Brisket Dawg\n$2 — Chopped Brisket\n$1 — Chili, Cheese, Bacon, Bawse Sawce\n$0.50 — Onions, Grilled Onions, Slaw, Jalapeños",
         price: 10,
         spicy: false,
       },
