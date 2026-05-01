@@ -145,7 +145,7 @@ export default function Menu() {
             </div>
             <div className="flex flex-wrap items-center justify-between gap-4">
               <span className="font-display text-xl text-secondary tracking-wide">MAKE ANY DAWG A BRISKET DAWG</span>
-              <span className="font-display text-3xl text-secondary">+$3</span>
+              <span className="font-display text-3xl text-secondary">$3</span>
             </div>
           </div>
 
