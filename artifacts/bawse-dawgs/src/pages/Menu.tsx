@@ -180,8 +180,12 @@ export default function Menu() {
                     >
                       <div className="p-5">
                         <div className="flex justify-between items-start mb-1.5">
-                          <h3 className={`font-display text-xl tracking-wide flex items-center gap-2 ${item.crown ? "text-primary" : "text-white"}`}>
-                            {item.crown && <Flame className="w-4 h-4 text-secondary flex-shrink-0" />}
+                          <h3 className={`font-display text-xl tracking-wide flex items-center gap-2 text-primary`}>
+                            {item.crown && (
+                              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                                <path d="M12 3L14.5 8.5L20 6L17.5 11.5L22 15L16.5 15.5L18 21L12 17.8L6 21L7.5 15.5L2 15L6.5 11.5L4 6L9.5 8.5L12 3Z" fill="#c9a227" stroke="#c9a227" strokeWidth="0.7" strokeLinejoin="round"/>
+                              </svg>
+                            )}
                             {item.spicy && <Flame className="w-4 h-4 text-secondary flex-shrink-0" />}
                             {item.name}
                           </h3>
