@@ -45,7 +45,7 @@ export default function Home() {
                 display: "block",
                 margin: "0 auto",
                 position: "relative",
-                left: "-40px",
+                left: "-32px",
                 filter: "drop-shadow(0 4px 32px rgba(201,162,39,0.28))",
               }}
             />
