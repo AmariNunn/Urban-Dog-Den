@@ -16,14 +16,14 @@ const STARS = Array.from({ length: 45 }, (_, i) => ({
 const MENU_DATA = [
   {
     category: "SIGNATURE DAWGS",
-    subtitle: "Chef-Driven. Built to Stand Out.",
+    subtitle: "Chef Driven. Built to Stand Out.",
     tag: "Premium",
     items: [
-      { id: "bawse", name: "The Bawse Dawg", desc: "Brisket sausage, chili, slaw, cheese, onions, Bawse Sauce", price: 13, spicy: false, crown: true },
-      { id: "dirty", name: "Dirty South Dawg", desc: "Chili, pimento cheese, bacon crumble, jalapeños", price: 12, spicy: false },
-      { id: "carolina", name: "Carolina Heat", desc: "Mustard, chili, slaw, pickled onions", price: 11, spicy: true },
-      { id: "corn", name: "Street Corn Dawg", desc: "Elote-style: lime crema, cotija, tajin", price: 12, spicy: false },
-      { id: "nashville", name: "Nashville Dawg", desc: "Hot oil glaze, pickles, slaw, comeback sauce", price: 12, spicy: true },
+      { id: "bawse", name: "Bawse Dawg", desc: "Brisket sausage, chopped brisket, chili, slaw, mustard, onions, Bawse Sawce", price: 13, spicy: false, crown: true },
+      { id: "dirty", name: "Dirty South Dawg", desc: "Chili, cheese, bacon, Bawse Sawce", price: 12, spicy: false },
+      { id: "nacho", name: "Nacho Dawg", desc: "Chili, cheese, jalapeños", price: 11, spicy: true },
+      { id: "elote", name: "Elote Dawg", desc: "Corn, mayo, cotija cheese, tajin, hot sauce, lime", price: 12, spicy: false },
+      { id: "nash", name: "Nash Dawg", desc: "Hot oil glaze, pickles, slaw", price: 12, spicy: true },
     ],
   },
   {
@@ -32,36 +32,53 @@ const MENU_DATA = [
     tag: "Classic",
     items: [
       { id: "plain", name: "Plain Jane", desc: "Mustard, ketchup, relish", price: 9, spicy: false },
-      { id: "big", name: "Big Dawg", desc: "Chili, slaw, cheese", price: 11, spicy: false },
+      { id: "big", name: "Big Dawg", desc: "Chili, onions, mustard, slaw", price: 11, spicy: false },
+      { id: "demi", name: "Demi Dawg", desc: "Chili, slaw, relish, mustard, ketchup, onions", price: 11, spicy: false },
+      { id: "walking", name: "Walking Dawg", desc: "Chips, chili, cheese, chopped dawg, sour cream, jalapeños", price: 12, spicy: true },
     ],
   },
   {
-    category: "BUILD YOUR OWN",
-    subtitle: "Pick any toppings. Make it Bawse.",
+    category: "BUILD YOUR OWN BAWSE DAWG",
+    subtitle: "Your Dawg. Your Way.",
     tag: "$10 Base",
     items: [
-      { id: "byo", name: "Build Your Own Dawg", desc: "Bawse Dawg base + your choice of toppings. Chili, Slaw, Onions, Grilled Onions & Peppers, Jalapeños, Cheese, Pimento Cheese, Bacon, Bawse Sauce (BBQ), Spicy Jerk Sauce — $0.50–$1.50 each", price: 10, spicy: false },
+      {
+        id: "byo",
+        name: "Base Dawg",
+        desc: "Start at $10 · Make it a Brisket Dawg +$3\n\nToppings: Onions, Grilled Onions, Slaw, Jalapeños — $0.50 each\nChili, Cheese, Bacon, Bawse Sawce — $1 each\nChopped Brisket — $2",
+        price: 10,
+        spicy: false,
+      },
     ],
   },
   {
-    category: "LOADED FRIES",
-    subtitle: "Big Flavor. Zero Regrets.",
-    tag: "Sides",
-    items: [
-      { id: "bawse_fries", name: "Bawse Fries", desc: "Cheese, bacon, Bawse sauce", price: 9, spicy: false, crown: true },
-      { id: "chili_fries", name: "Chili Cheese Fries", desc: "Chili, cheese", price: 9, spicy: false },
-      { id: "elote_fries", name: "Elote Fries", desc: "Cotija, lime crema, tajin", price: 9, spicy: false },
-    ],
-  },
-  {
-    category: "SIDES & DRINKS",
-    subtitle: "Complete the Mission.",
+    category: "SIDES",
+    subtitle: "Keep It Going.",
     tag: "Add-ons",
     items: [
-      { id: "fries", name: "Fries", desc: "Crispy, golden, and perfect", price: 5, spicy: false },
-      { id: "chips", name: "Grippo's Chips", desc: "The real BBQ chip", price: 3, spicy: false },
-      { id: "pie", name: "Mini Sweet Potato Pie", desc: "Made with love", price: 5, spicy: false },
-      { id: "drink", name: "Cold Drinks", desc: "Assorted soda & water", price: 3, spicy: false },
+      { id: "fries", name: "Fries", desc: "", price: 5, spicy: false },
+      { id: "chips", name: "Chips", desc: "", price: 3, spicy: false },
+      { id: "elote_cup", name: "Elote Cup", desc: "Saturday only", price: 5, spicy: false },
+    ],
+  },
+  {
+    category: "DRINKS",
+    subtitle: "Stay Refreshed.",
+    tag: "Beverages",
+    items: [
+      { id: "soda", name: "Soda", desc: "", price: 4, spicy: false },
+      { id: "water", name: "Water", desc: "", price: 3, spicy: false },
+      { id: "lemonade", name: "Lemonade", desc: "", price: 5, spicy: false },
+      { id: "fruit_tea", name: "Fruit Tea", desc: "", price: 5, spicy: false },
+    ],
+  },
+  {
+    category: "DESSERTS",
+    subtitle: "Finish Strong.",
+    tag: "Sweet",
+    items: [
+      { id: "pie", name: "Mini Sweet Potato Pie", desc: "", price: 5, spicy: false },
+      { id: "brownie", name: "Brownie", desc: "", price: 5, spicy: false },
     ],
   },
 ];

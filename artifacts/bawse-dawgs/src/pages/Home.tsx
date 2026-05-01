@@ -36,7 +36,7 @@ export default function Home() {
             transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
           >
             <img
-              src={import.meta.env.BASE_URL + "bawse_dawgs_final_1777411777939.png"}
+              src={import.meta.env.BASE_URL + "bawse-dawgs-logo-new2.png"}
               alt="Bawse Dawgs"
               className="mx-auto"
               style={{
