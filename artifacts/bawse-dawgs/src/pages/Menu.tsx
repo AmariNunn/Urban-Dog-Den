@@ -40,12 +40,12 @@ const MENU_DATA = [
   {
     category: "BUILD YOUR OWN BAWSE DAWG",
     subtitle: "Your Dawg. Your Way.",
-    tag: "",
+    tag: "Make Any Dawg a Brisket Dawg +$3",
     items: [
       {
         id: "byo",
         name: "Base Dawg",
-        desc: "$3 — Make it a Brisket Dawg\n$2 — Chopped Brisket\n$1 — Chili, Cheese, Bacon, Bawse Sawce\n$0.50 — Onions, Grilled Onions, Slaw, Jalapeños",
+        desc: "$0.50 — Onions, Grilled Onions, Slaw, Jalapeños\n$1 — Chili, Cheese, Bacon, Bawse Sawce\n$2 — Chopped Brisket\n$3 — Make it a Brisket Dawg",
         price: 10,
         spicy: false,
       },
@@ -63,7 +63,7 @@ const MENU_DATA = [
   {
     category: "DRINKS",
     subtitle: "Stay Refreshed.",
-    tag: "Beverages",
+    tag: "",
     items: [
       { id: "soda", name: "Soda", desc: "", price: 4, spicy: false },
       { id: "water", name: "Water", desc: "", price: 3, spicy: false },
@@ -73,8 +73,8 @@ const MENU_DATA = [
   },
   {
     category: "DESSERTS",
-    subtitle: "Finish Strong.",
-    tag: "So Good",
+    subtitle: "So Good",
+    tag: "",
     items: [
       { id: "pie", name: "Mini Sweet Potato Pie", desc: "", price: 5, spicy: false },
       { id: "brownie", name: "Brownie", desc: "", price: 5, spicy: false },
