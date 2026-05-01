@@ -53,8 +53,8 @@ const MENU_DATA = [
   },
   {
     category: "SIDES",
-    subtitle: "KEEP IT GOING",
-    tag: "The Best",
+    subtitle: "The Best",
+    tag: "KEEP IT GOING",
     items: [
       { id: "chips", name: "Chips", desc: "", price: 3, spicy: false },
       { id: "elote_cup", name: "Elote Cup", desc: "Saturday only", price: 5, spicy: false },
