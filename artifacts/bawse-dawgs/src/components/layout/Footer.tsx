@@ -8,9 +8,8 @@ export function Footer() {
         
         <div className="flex gap-6 mb-12">
           <Link href="/" data-testid="link-footer-home" className="text-sm font-heading tracking-widest text-primary hover:text-white transition-colors uppercase">Home</Link>
-          <Link href="/menu" data-testid="link-footer-menu" className="text-sm font-heading tracking-widest text-primary hover:text-white transition-colors uppercase">Menu</Link>
           <Link href="/about" data-testid="link-footer-about" className="text-sm font-heading tracking-widest text-primary hover:text-white transition-colors uppercase">About</Link>
-          <Link href="/order" data-testid="link-footer-order" className="text-sm font-heading tracking-widest text-primary hover:text-white transition-colors uppercase">Order Now</Link>
+          <Link href="/menu" data-testid="link-footer-menu" className="text-sm font-heading tracking-widest text-primary hover:text-white transition-colors uppercase">Menu</Link>
         </div>
         
         <div className="text-xs text-muted-foreground/50 border-t border-white/5 pt-8 w-full">

@@ -70,9 +70,7 @@ export default function Home() {
               href="/menu"
               data-testid="button-view-menu"
               className="shimmer-btn-red px-10 py-4 rounded-sm uppercase tracking-widest font-bold flex items-center justify-center gap-3 flex-1"
-            >
-              View Menu
-            </Link>
+            >Menu</Link>
           </motion.div>
 
         </div>
@@ -83,7 +81,6 @@ export default function Home() {
           style={{ background: "linear-gradient(to bottom, transparent, #000000)" }}
         />
       </section>
-
       {/* ── MARQUEE ── */}
       <section className="py-6 bg-primary overflow-hidden flex whitespace-nowrap border-y border-primary/50">
         <div className="animate-marquee flex gap-8 items-center text-black font-display text-3xl tracking-widest uppercase">
@@ -95,7 +92,6 @@ export default function Home() {
           ))}
         </div>
       </section>
-
       {/* ── BRAND PILLARS ── */}
       <section
         className="py-28 relative z-10 border-t border-primary/10"
@@ -153,7 +149,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       <style>{`
         @keyframes marquee {
           0% { transform: translateX(0); }
