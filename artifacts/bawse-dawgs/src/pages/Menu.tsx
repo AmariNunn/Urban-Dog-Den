@@ -40,7 +40,7 @@ const MENU_DATA = [
   {
     category: "BUILD YOUR OWN BAWSE DAWG",
     subtitle: "Your Dawg. Your Way.",
-    tag: "Make Any Dawg a Brisket Dawg +$3",
+    tag: "",
     items: [
       {
         id: "byo",
