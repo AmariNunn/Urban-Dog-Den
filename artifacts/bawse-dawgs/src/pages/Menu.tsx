@@ -40,12 +40,12 @@ const MENU_DATA = [
   {
     category: "BUILD YOUR OWN BAWSE DAWG",
     subtitle: "Your Dawg. Your Way.",
-    tag: "$10 Base",
+    tag: "",
     items: [
       {
         id: "byo",
         name: "Base Dawg",
-        desc: "Start at $10 · Make it a Brisket Dawg +$3\n\nToppings: Onions, Grilled Onions, Slaw, Jalapeños — $0.50 each\nChili, Cheese, Bacon, Bawse Sawce — $1 each\nChopped Brisket — $2",
+        desc: "$3 — Make it a Brisket Dawg\n$0.50 — Onions, Grilled Onions, Slaw, Jalapeños\n$1 — Chili, Cheese, Bacon, Bawse Sawce\n$2 — Chopped Brisket",
         price: 10,
         spicy: false,
       },
@@ -54,7 +54,7 @@ const MENU_DATA = [
   {
     category: "SIDES",
     subtitle: "Keep It Going.",
-    tag: "Add-ons",
+    tag: "The Best",
     items: [
       { id: "chips", name: "Chips", desc: "", price: 3, spicy: false },
       { id: "elote_cup", name: "Elote Cup", desc: "Saturday only", price: 5, spicy: false },
@@ -74,7 +74,7 @@ const MENU_DATA = [
   {
     category: "DESSERTS",
     subtitle: "Finish Strong.",
-    tag: "Sweet",
+    tag: "So Good",
     items: [
       { id: "pie", name: "Mini Sweet Potato Pie", desc: "", price: 5, spicy: false },
       { id: "brownie", name: "Brownie", desc: "", price: 5, spicy: false },
@@ -187,7 +187,7 @@ export default function Menu() {
                           </h3>
                           <span className="font-heading text-lg text-primary ml-4 flex-shrink-0">${item.price}</span>
                         </div>
-                        <p className="text-white/30 font-sans text-xs leading-relaxed mb-4">{item.desc}</p>
+                        <p className="text-white/30 font-sans text-xs leading-relaxed mb-4 whitespace-pre-line">{item.desc}</p>
 
                         <button
                           onClick={() => handleAddToCart(item)}
