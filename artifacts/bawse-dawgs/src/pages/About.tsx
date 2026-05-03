@@ -3,10 +3,8 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 const MARQUEE_ITEMS = [
-  "Nashville, TN",
   "Brisket Smoked Sausage",
-  "Slow-Smoked",
-  "Southern Twist",
+  "Just a Good Old Dog",
 ];
 
 const STATIC_CHIPS = [
