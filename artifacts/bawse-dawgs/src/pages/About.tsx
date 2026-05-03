@@ -181,9 +181,7 @@ export default function About() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="text-center"
           >
-            <p className="font-heading text-[11px] tracking-[0.55em] uppercase mb-6" style={{ color: GOLD }}>
-              THE SIGNATURE
-            </p>
+            <p className="font-heading text-[11px] tracking-[0.55em] uppercase mb-6" style={{ color: GOLD }}>Try Our</p>
             <h2
               className="font-display uppercase leading-[0.88] text-white"
               style={{ fontSize: "clamp(2.8rem, 10vw, 7.5rem)" }}
