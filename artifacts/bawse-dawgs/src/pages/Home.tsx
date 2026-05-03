@@ -86,7 +86,7 @@ export default function Home() {
         <div className="animate-marquee flex gap-8 items-center text-black font-display text-3xl tracking-widest uppercase">
           {[...Array(12)].map((_, i) => (
             <span key={i} className="flex items-center gap-8">
-              IT'S JUST A GOOD OL' DAWG{" "}
+              JUST A GOOD OL' DAWG{" "}
               <Flame className="w-6 h-6 inline-block" />
             </span>
           ))}
