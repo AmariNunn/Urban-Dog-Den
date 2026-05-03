@@ -171,6 +171,30 @@ export default function About() {
         </section>
 
 
+        {/* ── FAMOUS BRISKET SMOKED SAUSAGE ── */}
+        <section className="relative z-10 py-20 md:py-28 px-8" style={{ background: "#000" }}>
+          <div className="w-full" style={{ height: "1px", background: GOLD, marginBottom: "3rem" }} />
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="text-center"
+          >
+            <p className="font-heading text-[11px] tracking-[0.55em] uppercase mb-6" style={{ color: GOLD }}>
+              THE SIGNATURE
+            </p>
+            <h2
+              className="font-display uppercase leading-[0.88] text-white"
+              style={{ fontSize: "clamp(2.8rem, 10vw, 7.5rem)" }}
+            >
+              FAMOUS BRISKET<br />
+              <span style={{ color: GOLD }}>SMOKED SAUSAGE</span>
+            </h2>
+          </motion.div>
+          <div className="w-full" style={{ height: "1px", background: GOLD, marginTop: "3rem" }} />
+        </section>
+
         <style>{`
           @keyframes marquee-scroll {
             0% { transform: translateX(0); }
