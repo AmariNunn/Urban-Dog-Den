@@ -154,7 +154,7 @@ export default function Menu() {
             style={{ background: "rgba(201,162,39,0.06)" }}>
             <div className="flex flex-wrap items-center justify-between gap-4">
               <span className="font-display text-xl text-primary tracking-wide">MAKE ANY DAWG A BRISKET DAWG / VEGGIE DAWG</span>
-              <span className="font-display text-3xl text-primary">+$3</span>
+              <span className="font-display text-3xl text-primary">$3</span>
             </div>
             <div className="flex flex-wrap items-center justify-between gap-4">
               <span className="font-display text-xl text-primary tracking-wide">MAKE ANY DAWG A COMBO</span>
