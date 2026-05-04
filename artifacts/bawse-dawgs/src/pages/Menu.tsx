@@ -157,7 +157,10 @@ export default function Menu() {
             </div>
             <div className="flex flex-wrap items-center justify-between gap-4">
               <span className="font-display text-xl text-primary tracking-wide">MAKE ANY DAWG A COMBO</span>
-              <span className="font-display text-3xl text-primary">$5</span>
+              <div className="flex flex-col items-center leading-none">
+                <span className="font-display text-3xl text-primary">$3</span>
+                <span className="font-display text-3xl text-primary">$5</span>
+              </div>
             </div>
           </div>
 
