@@ -156,7 +156,7 @@ export default function About() {
 
 
         {/* ── FAMOUS BRISKET SMOKED SAUSAGE ── */}
-        <section className="relative z-10 py-20 md:py-28 px-8" style={{ background: "#000" }}>
+        <section className="relative z-10 py-12 md:py-28 px-8" style={{ background: "#000" }}>
           <div className="w-full" style={{ height: "1px", background: GOLD, marginBottom: "3rem" }} />
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -168,7 +168,7 @@ export default function About() {
             <p className="font-heading text-[11px] tracking-[0.55em] uppercase mb-6" style={{ color: GOLD }}>Try Our</p>
             <h2
               className="font-display uppercase leading-[0.88]"
-              style={{ fontSize: "clamp(2.8rem, 10vw, 7.5rem)" }}
+              style={{ fontSize: "clamp(2.2rem, 10vw, 7.5rem)" }}
             >
               <span style={{ color: GOLD }}>BRISKET</span><br />
               <span className="text-white">SMOKED SAUSAGE</span>
