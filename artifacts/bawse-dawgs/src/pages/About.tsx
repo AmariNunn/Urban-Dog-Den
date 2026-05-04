@@ -56,8 +56,8 @@ export default function About() {
 
         {/* ── HERO ── */}
         <section
-          className="relative z-10 flex items-end overflow-hidden"
-          style={{ background: "#000", minHeight: "38vh", paddingTop: "2rem", paddingBottom: "2rem" }}
+          className="relative z-10 flex items-center overflow-hidden"
+          style={{ background: "#000", paddingTop: "2.5rem", paddingBottom: "2.5rem" }}
         >
           {/* Vertical sidebar text */}
           <div
