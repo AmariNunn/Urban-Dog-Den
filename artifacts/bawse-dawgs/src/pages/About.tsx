@@ -91,16 +91,6 @@ export default function About() {
               <span style={{ color: GOLD }} className="block">DONE DIFFERENT.</span>
             </motion.h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.55 }}
-              className="font-heading text-[11px] tracking-[0.5em] uppercase mt-6"
-              style={{ color: GOLD }}
-            >
-              GOOD DAWGS
-            </motion.p>
-
           </div>
         </section>
 
