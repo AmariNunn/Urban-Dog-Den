@@ -57,7 +57,7 @@ export default function About() {
         {/* ── HERO ── */}
         <section
           className="relative z-10 flex items-center overflow-hidden"
-          style={{ background: "#000", paddingTop: "1rem", paddingBottom: "1rem" }}
+          style={{ background: "#000", paddingTop: "1rem", paddingBottom: "0" }}
         >
           {/* Vertical sidebar text */}
           <div
@@ -93,7 +93,7 @@ export default function About() {
         </section>
 
         {/* ── TWO-COLUMN CONTENT ── */}
-        <section className="relative z-10 py-16 md:py-24 px-8 md:px-16" style={{ background: "#000" }}>
+        <section className="relative z-10 py-8 md:py-24 px-8 md:px-16" style={{ background: "#000" }}>
           <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
 
             {/* Left: WHO WE ARE */}
