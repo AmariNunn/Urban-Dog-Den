@@ -171,7 +171,7 @@ export default function About() {
               style={{ fontSize: "clamp(2.2rem, 10vw, 7.5rem)" }}
             >
               <span style={{ color: GOLD }}>BRISKET</span><br />
-              <span className="text-white">SMOKED SAUSAGE</span>
+              <span style={{ color: GOLD }}>SMOKED SAUSAGE</span>
             </h2>
           </motion.div>
           <div className="w-full" style={{ height: "1px", background: GOLD, marginTop: "3rem" }} />
