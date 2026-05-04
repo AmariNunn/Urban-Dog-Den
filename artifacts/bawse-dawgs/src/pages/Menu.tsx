@@ -65,7 +65,7 @@ const MENU_DATA = [
   },
   {
     category: "SIDES",
-    subtitle: "The Best",
+    subtitle: "The Best.",
     tag: "",
     items: [
       { id: "fries", name: "Fries", desc: "", price: 5, spicy: false },
@@ -86,7 +86,7 @@ const MENU_DATA = [
   },
   {
     category: "DESSERTS",
-    subtitle: "So Good",
+    subtitle: "So Good.",
     tag: "",
     items: [
       { id: "pie", name: "Mini Sweet Potato Pie", desc: "", price: 5, spicy: false },
