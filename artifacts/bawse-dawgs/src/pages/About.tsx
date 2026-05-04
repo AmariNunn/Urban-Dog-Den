@@ -57,7 +57,7 @@ export default function About() {
         {/* ── HERO ── */}
         <section
           className="relative z-10 flex items-center overflow-hidden"
-          style={{ background: "#000", paddingTop: "2.5rem", paddingBottom: "2.5rem" }}
+          style={{ background: "#000", paddingTop: "1rem", paddingBottom: "1rem" }}
         >
           {/* Vertical sidebar text */}
           <div
@@ -86,7 +86,7 @@ export default function About() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55 }}
-              style={{ height: "clamp(220px, 48vw, 380px)", objectFit: "contain" }}
+              style={{ height: "clamp(264px, 58vw, 456px)", objectFit: "contain" }}
             />
 
           </div>
