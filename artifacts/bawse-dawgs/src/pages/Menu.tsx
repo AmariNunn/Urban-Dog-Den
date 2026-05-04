@@ -211,6 +211,12 @@ export default function Menu() {
                         >
                           <Plus className="w-3.5 h-3.5" /> Add to Order
                         </button>
+                        {item.spicy && (
+                          <div className="mt-2 flex items-center justify-center gap-1.5 text-secondary font-heading text-[10px] uppercase tracking-[0.3em]">
+                            <Flame className="w-3.5 h-3.5" />
+                            <span>spicy</span>
+                          </div>
+                        )}
                       </div>
                     </motion.div>
                   ))}
