@@ -57,10 +57,10 @@ const MENU_DATA = [
     tag: "",
     items: [
       { id: "bawse_fries", name: "Bawse Fries", desc: "Chopped brisket, brisket sausage, chili, slaw, Bawse Sawce", price: 10, spicy: false },
-      { id: "big_fries", name: "Big Fries", desc: "Chili, cheese", price: 8, spicy: false },
       { id: "elote_fries", name: "Elote Fries", desc: "Corn, mayo, cotija cheese, lime, tajin, hot sauce", price: 9, spicy: false },
       { id: "dirty_fries", name: "Dirty Fries", desc: "Chili, cheese, bacon, Bawse Sawce", price: 9, spicy: false },
       { id: "nacho_fries", name: "Nacho Fries", desc: "Chili, cheese, jalapeños, sour cream", price: 9, spicy: false },
+      { id: "big_fries", name: "Big Fries", desc: "Chili, cheese", price: 8, spicy: false },
     ],
   },
   {
