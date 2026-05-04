@@ -78,8 +78,8 @@ const MENU_DATA = [
     subtitle: "Stay Refreshed.",
     tag: "",
     items: [
-      { id: "soda", name: "Soda", desc: "", price: 4, spicy: false },
       { id: "water", name: "Water", desc: "", price: 3, spicy: false },
+      { id: "soda", name: "Soda", desc: "", price: 4, spicy: false },
       { id: "lemonade", name: "Lemonade", desc: "", price: 5, spicy: false },
       { id: "fruit_tea", name: "Fruit Tea", desc: "", price: 5, spicy: false },
     ],
