@@ -148,7 +148,12 @@ export default function About() {
               <p className="font-sans text-sm md:text-base leading-relaxed mb-5" style={{ color: "rgba(255,255,255,0.82)" }}>
                 Bawse Dawgs was created to elevate a classic staple into an unforgettable memory built from southern roots, bold flavors, and a whole lotta attitude.
               </p>
-              <p className="font-sans text-sm md:text-base leading-relaxed" style={{ color: "rgba(255,255,255,0.82)" }}>This isn't your average hot dog — its "just a good ol' dawg".</p>
+              <p className="font-sans text-sm md:text-base leading-relaxed" style={{ color: "rgba(255,255,255,0.82)" }}>
+                This isn't your average hot dog — 
+              </p>
+              <p className="font-sans text-sm md:text-base leading-relaxed" style={{ color: GOLD }}>
+                good dawgs
+              </p>
             </motion.div>
 
           </div>
