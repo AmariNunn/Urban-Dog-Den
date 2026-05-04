@@ -68,8 +68,8 @@ const MENU_DATA = [
     subtitle: "The Best.",
     tag: "",
     items: [
-      { id: "fries", name: "Fries", desc: "", price: 5, spicy: false },
       { id: "chips", name: "Chips", desc: "", price: 3, spicy: false },
+      { id: "fries", name: "Fries", desc: "", price: 5, spicy: false },
       { id: "elote_cup", name: "Elote Cup", desc: "Saturday only", price: 5, spicy: false },
     ],
   },
