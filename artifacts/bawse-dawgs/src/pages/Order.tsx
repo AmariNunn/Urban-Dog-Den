@@ -2,7 +2,7 @@ import { PageTransition } from "@/components/layout/PageTransition";
 import { useCart } from "@/context/CartContext";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { Minus, Plus, Trash2, ArrowRight, ShoppingBag, CheckCircle2 } from "lucide-react";
+import { Minus, Plus, Trash2, ArrowRight, ShoppingBag, Loader2 } from "lucide-react";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -19,66 +19,64 @@ const STARS = Array.from({ length: 35 }, (_, i) => ({
 
 const BG: React.CSSProperties = { background: "#07060a" };
 
+const Overlay = () => (
+  <>
+    <svg className="fixed inset-0 w-full h-full pointer-events-none opacity-[0.07] z-0" aria-hidden>
+      <filter id="grain-order">
+        <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="4" stitchTiles="stitch"/>
+        <feColorMatrix type="saturate" values="0"/>
+      </filter>
+      <rect width="100%" height="100%" filter="url(#grain-order)"/>
+    </svg>
+    <div className="fixed inset-0 pointer-events-none z-0">
+      {STARS.map(({ id, x, y, size, opacity, color }) => (
+        <div key={id} className="absolute rounded-full"
+          style={{ left: `${x}%`, top: `${y}%`, width: size, height: size, background: color, opacity }} />
+      ))}
+    </div>
+    <div className="fixed inset-0 pointer-events-none z-0" style={{
+      background: "radial-gradient(ellipse 55% 40% at 50% 0%, rgba(201,162,39,0.09) 0%, transparent 65%)",
+    }} />
+  </>
+);
+
 export default function Order() {
-  const { items, updateQuantity, updateInstructions, removeItem, subtotal, clearCart } = useCart();
+  const { items, updateQuantity, updateInstructions, removeItem, subtotal } = useCart();
   const [orderType, setOrderType] = useState("pickup");
-  const [isPlaced, setIsPlaced] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handlePlaceOrder = () => {
-    setIsPlaced(true);
-    setTimeout(() => clearCart(), 500);
+  const handlePlaceOrder = async () => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const res = await fetch("/.netlify/functions/create-checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          items: items.map((i) => ({
+            name: i.name,
+            price: i.price,
+            quantity: i.quantity,
+            instructions: i.instructions,
+            options: i.options,
+          })),
+          orderType,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.url) {
+        throw new Error(data.error || "Failed to create checkout session");
+      }
+
+      window.location.href = data.url;
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+      setIsLoading(false);
+    }
   };
-
-  const Overlay = () => (
-    <>
-      <svg className="fixed inset-0 w-full h-full pointer-events-none opacity-[0.07] z-0" aria-hidden>
-        <filter id="grain-order">
-          <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="4" stitchTiles="stitch"/>
-          <feColorMatrix type="saturate" values="0"/>
-        </filter>
-        <rect width="100%" height="100%" filter="url(#grain-order)"/>
-      </svg>
-      <div className="fixed inset-0 pointer-events-none z-0">
-        {STARS.map(({ id, x, y, size, opacity, color }) => (
-          <div key={id} className="absolute rounded-full"
-            style={{ left: `${x}%`, top: `${y}%`, width: size, height: size, background: color, opacity }} />
-        ))}
-      </div>
-      <div className="fixed inset-0 pointer-events-none z-0" style={{
-        background: "radial-gradient(ellipse 55% 40% at 50% 0%, rgba(201,162,39,0.09) 0%, transparent 65%)",
-      }} />
-    </>
-  );
-
-  if (isPlaced) {
-    return (
-      <PageTransition>
-        <div className="min-h-screen relative flex flex-col items-center justify-center text-center px-4 py-20" style={BG}>
-          <Overlay />
-          <div className="relative z-10">
-            <motion.div initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: "spring", bounce: 0.5 }}>
-              <CheckCircle2 className="w-24 h-24 text-primary mb-6 mx-auto" style={{ filter: "drop-shadow(0 0 20px rgba(201,162,39,0.4))" }} />
-            </motion.div>
-            <motion.h1 initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }}
-              className="font-display text-5xl md:text-7xl mb-3 uppercase tracking-tight" style={{ textShadow: "0 0 40px rgba(201,162,39,0.25)" }}>
-              ORDER SECURED
-            </motion.h1>
-            <motion.p initial={{ y: 15, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.3 }}
-              className="text-base font-heading text-white/30 uppercase tracking-widest mb-10">
-              Your {orderType} is locked in. BAWSE-level execution incoming.
-            </motion.p>
-            <motion.div initial={{ y: 15, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.4 }}>
-              <Link href="/" data-testid="button-back-to-home"
-                className="shimmer-btn px-10 py-4 rounded-sm flex items-center justify-center gap-2"
-                onClick={() => setIsPlaced(false)}>
-                Back to Home <ArrowRight className="w-4 h-4" />
-              </Link>
-            </motion.div>
-          </div>
-        </div>
-      </PageTransition>
-    );
-  }
 
   if (items.length === 0) {
     return (
@@ -113,7 +111,6 @@ export default function Order() {
         <Overlay />
 
         <div className="relative z-10 max-w-6xl mx-auto px-4 pt-10 pb-16">
-          {/* Header */}
           <div className="flex items-center gap-3 mb-8 pb-4 border-b border-white/[0.07]">
             <h1 className="font-display text-4xl md:text-5xl text-white tracking-tighter">
               YOUR <span className="text-primary">ORDER</span>
@@ -145,6 +142,11 @@ export default function Order() {
                             ${(item.price * item.quantity).toFixed(2)}
                           </span>
                         </div>
+                        {item.options && item.options.length > 0 && (
+                          <p className="text-[10px] text-white/30 font-heading uppercase tracking-widest mb-2">
+                            {item.options.join(" · ")}
+                          </p>
+                        )}
                         <div>
                           <Label className="text-[9px] text-white/20 uppercase tracking-widest mb-1.5 block">
                             Special Instructions
@@ -230,16 +232,30 @@ export default function Order() {
                   </div>
                 </div>
 
+                {error && (
+                  <p className="text-secondary text-[10px] font-heading uppercase tracking-widest mb-3 text-center">
+                    {error}
+                  </p>
+                )}
+
                 <button
                   onClick={handlePlaceOrder}
+                  disabled={isLoading}
                   data-testid="button-place-order"
-                  className="w-full shimmer-btn py-4 uppercase tracking-widest font-bold"
+                  className="w-full shimmer-btn py-4 uppercase tracking-widest font-bold flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Place Order
+                  {isLoading ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      Securing...
+                    </>
+                  ) : (
+                    "Place Order"
+                  )}
                 </button>
 
                 <p className="text-center text-[9px] text-white/15 font-heading tracking-widest uppercase mt-4">
-                  BAWSE-level execution guaranteed
+                  Powered by Stripe · BAWSE-level security
                 </p>
               </div>
             </div>

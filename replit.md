@@ -15,6 +15,18 @@ pnpm workspace monorepo using TypeScript. Each package manages its own dependenc
 - **Validation**: Zod (`zod/v4`), `drizzle-zod`
 - **API codegen**: Orval (from OpenAPI spec)
 - **Build**: esbuild (CJS bundle)
+- **Payments**: Stripe (hosted checkout, `price_data` dynamic line items)
+
+## Payments Architecture
+
+Stripe is integrated for checkout. The site is built for **Netlify deployment**:
+
+- **On Netlify**: `artifacts/bawse-dawgs/netlify/functions/create-checkout.ts` handles checkout session creation (serverless function at `/.netlify/functions/create-checkout`)
+- **In dev (Replit)**: Vite proxies `/.netlify/functions/create-checkout` → `http://localhost:8080/api/checkout` (Express route in `artifacts/api-server/src/routes/checkout.ts`)
+- **Success page**: `/order/success` — `artifacts/bawse-dawgs/src/pages/OrderSuccess.tsx`
+- **Required secrets**: `STRIPE_SECRET_KEY`, `VITE_STRIPE_PUBLISHABLE_KEY`
+- No products need to be pre-created in Stripe — items are passed as `price_data` at checkout time
+- Netlify function also at: `artifacts/bawse-dawgs/netlify/functions/stripe-webhook.ts` (requires `STRIPE_WEBHOOK_SECRET` env var)
 
 ## Key Commands
 

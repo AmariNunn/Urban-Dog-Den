@@ -9,6 +9,7 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import Menu from "@/pages/Menu";
 import Order from "@/pages/Order";
+import OrderSuccess from "@/pages/OrderSuccess";
 import About from "@/pages/About";
 import { AnimatePresence } from "framer-motion";
 import { useEffect } from "react";
@@ -34,6 +35,7 @@ function AppContent() {
             <Route path="/" component={Home} />
             <Route path="/menu" component={Menu} />
             <Route path="/order" component={Order} />
+            <Route path="/order/success" component={OrderSuccess} />
             <Route path="/about" component={About} />
             <Route component={NotFound} />
           </Switch>

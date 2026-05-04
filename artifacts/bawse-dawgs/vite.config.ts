@@ -61,6 +61,13 @@ export default defineConfig({
       strict: true,
       deny: ["**/.*"],
     },
+    proxy: {
+      "/.netlify/functions/create-checkout": {
+        target: "http://localhost:8080",
+        rewrite: () => "/api/checkout",
+        changeOrigin: true,
+      },
+    },
   },
   preview: {
     port,
