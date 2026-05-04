@@ -2,6 +2,7 @@
   base    = "."
   command = "pnpm install --no-frozen-lockfile && BASE_PATH=/ pnpm --filter @workspace/bawse-dawgs run build"
   publish = "artifacts/bawse-dawgs/dist/public"
+  functions = "artifacts/bawse-dawgs/netlify/functions"
 
 [build.environment]
   NODE_VERSION = "20"
