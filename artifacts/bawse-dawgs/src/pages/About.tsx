@@ -56,8 +56,8 @@ export default function About() {
 
         {/* ── HERO ── */}
         <section
-          className="relative z-10 flex items-center overflow-hidden"
-          style={{ background: "#000", minHeight: "52vh", paddingTop: "4rem", paddingBottom: "4rem" }}
+          className="relative z-10 flex items-end overflow-hidden"
+          style={{ background: "#000", minHeight: "38vh", paddingTop: "2rem", paddingBottom: "2rem" }}
         >
           {/* Vertical sidebar text */}
           <div
@@ -76,15 +76,26 @@ export default function About() {
             </span>
           </div>
 
-          {/* Hero content — left-aligned */}
-          <div className="w-full px-8 md:pl-20 md:pr-12">
+          {/* Hero content */}
+          <div className="w-full px-8 md:pl-20 md:pr-12 flex flex-col items-center">
+
+            {/* Logo */}
+            <motion.img
+              src="/bawse-dawgs-logo-new2.png"
+              alt="Bawse Dawgs"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55 }}
+              className="mb-5"
+              style={{ height: "80px", objectFit: "contain" }}
+            />
 
             {/* Headline */}
             <motion.h1
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display uppercase tracking-tighter leading-[0.88]"
+              className="font-display uppercase tracking-tighter leading-[0.88] text-center"
               style={{ fontSize: "clamp(3.2rem, 11vw, 8.5rem)" }}
             >
               <span style={{ color: GOLD }} className="block">GOOD DAWGS.</span>
