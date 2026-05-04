@@ -151,7 +151,7 @@ export default function About() {
               <p className="font-sans text-sm md:text-base leading-relaxed" style={{ color: "rgba(255,255,255,0.82)" }}>
                 This isn't your average hot dog — 
               </p>
-              <p className="font-sans text-sm md:text-base leading-relaxed" style={{ color: GOLD }}>its "just a good ol' dawg"</p>
+              <p className="font-sans text-sm md:text-base leading-relaxed" style={{ color: "rgba(255,255,255,0.82)" }}>its "just a good ol' dawg"</p>
             </motion.div>
 
           </div>
