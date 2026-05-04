@@ -161,7 +161,7 @@ export default function About() {
                 Bawse Dawgs was created to elevate a classic staple into an unforgettable memory built from southern roots, bold flavors, and a whole lotta attitude.
               </p>
               <p className="font-sans text-sm md:text-base leading-relaxed" style={{ color: "rgba(255,255,255,0.82)" }}>
-                Bawse Dawgs is all about keeping it bold, simple, and unforgettable. It's (just a good ol' dawg).
+                This isn't your average hot dog — this is a movement. A statement. A whole new standard.
               </p>
             </motion.div>
 
