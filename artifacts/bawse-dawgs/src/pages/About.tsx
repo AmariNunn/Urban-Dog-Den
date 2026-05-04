@@ -87,7 +87,7 @@ export default function About() {
               className="font-heading text-[11px] tracking-[0.5em] uppercase text-center mb-6"
               style={{ color: GOLD }}
             >
-              NASHVILLE, TN
+              GOOD DAWGS
             </motion.p>
 
             {/* Headline */}
@@ -161,7 +161,7 @@ export default function About() {
                 Bawse Dawgs was created to elevate a classic staple into an unforgettable memory built from southern roots, bold flavors, and a whole lotta attitude.
               </p>
               <p className="font-sans text-sm md:text-base leading-relaxed" style={{ color: "rgba(255,255,255,0.82)" }}>
-                This isn't your average hot dog — this is a movement. A statement. A whole new standard.
+                It's (just a good ol' dawg).
               </p>
             </motion.div>
 
@@ -181,11 +181,11 @@ export default function About() {
           >
             <p className="font-heading text-[11px] tracking-[0.55em] uppercase mb-6" style={{ color: GOLD }}>Try Our</p>
             <h2
-              className="font-display uppercase leading-[0.88] text-white"
+              className="font-display uppercase leading-[0.88]"
               style={{ fontSize: "clamp(2.8rem, 10vw, 7.5rem)" }}
             >
-              FAMOUS BRISKET<br />
-              <span style={{ color: GOLD }}>SMOKED SAUSAGE</span>
+              <span style={{ color: GOLD }}>BRISKET</span><br />
+              <span className="text-white">SMOKED SAUSAGE</span>
             </h2>
           </motion.div>
           <div className="w-full" style={{ height: "1px", background: GOLD, marginTop: "3rem" }} />
