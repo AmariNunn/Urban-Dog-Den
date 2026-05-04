@@ -79,17 +79,6 @@ export default function About() {
           {/* Hero content — left-aligned */}
           <div className="w-full px-8 md:pl-20 md:pr-12">
 
-            {/* Nashville eyebrow — centered */}
-            <motion.p
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55 }}
-              className="font-heading text-[11px] tracking-[0.5em] uppercase text-center mb-6"
-              style={{ color: GOLD }}
-            >
-              GOOD DAWGS
-            </motion.p>
-
             {/* Headline */}
             <motion.h1
               initial={{ opacity: 0, y: 28 }}
@@ -101,6 +90,16 @@ export default function About() {
               <span className="text-white block">GOOD DAWGS.</span>
               <span style={{ color: GOLD }} className="block">DONE DIFFERENT.</span>
             </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.55 }}
+              className="font-heading text-[11px] tracking-[0.5em] uppercase mt-6"
+              style={{ color: GOLD }}
+            >
+              GOOD DAWGS
+            </motion.p>
 
           </div>
         </section>
