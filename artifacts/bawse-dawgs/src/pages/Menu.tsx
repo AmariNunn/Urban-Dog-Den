@@ -70,7 +70,7 @@ const MENU_DATA = [
     items: [
       { id: "chips", name: "Chips", desc: "", price: 3, spicy: false },
       { id: "fries", name: "Fries", desc: "", price: 5, spicy: false },
-      { id: "elote_cup", name: "Elote Cup", desc: "Saturday only", price: 5, spicy: false },
+      { id: "elote_cup", name: "Elote Cup", desc: "Fri - Sat", price: 5, spicy: false },
     ],
   },
   {
