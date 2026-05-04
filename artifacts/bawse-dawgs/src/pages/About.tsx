@@ -87,7 +87,7 @@ export default function About() {
               className="font-display uppercase tracking-tighter leading-[0.88]"
               style={{ fontSize: "clamp(3.2rem, 11vw, 8.5rem)" }}
             >
-              <span className="text-white block">GOOD DAWGS.</span>
+              <span style={{ color: GOLD }} className="block">GOOD DAWGS.</span>
               <span style={{ color: GOLD }} className="block">DONE DIFFERENT.</span>
             </motion.h1>
 
