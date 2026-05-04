@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 const MARQUEE_ITEMS = [
-  "Good Dawg",
-  "Good Dawg",
+  "Brisket Smoked Sausage",
+  "Just a Good Old Dawg",
 ];
 
 const STATIC_CHIPS = [
@@ -86,7 +86,7 @@ export default function About() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55 }}
-              style={{ height: "clamp(180px, 40vw, 320px)", objectFit: "contain" }}
+              style={{ height: "clamp(220px, 48vw, 380px)", objectFit: "contain" }}
             />
 
           </div>
