@@ -102,18 +102,6 @@ export default function About() {
               <span style={{ color: GOLD }} className="block">DONE DIFFERENT.</span>
             </motion.h1>
 
-            {/* Red underline */}
-            <motion.div
-              initial={{ scaleX: 0, opacity: 0 }}
-              animate={{ scaleX: 1, opacity: 1 }}
-              transition={{ delay: 0.38, duration: 0.55 }}
-              className="mt-6 h-[3px]"
-              style={{
-                background: RED,
-                transformOrigin: "left center",
-                width: "clamp(5rem, 18vw, 14rem)",
-              }}
-            />
           </div>
         </section>
 
