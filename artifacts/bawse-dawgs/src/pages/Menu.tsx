@@ -214,7 +214,7 @@ export default function Menu() {
                         {item.spicy && (
                           <div className="mt-2 flex items-center justify-center gap-1.5 text-secondary font-heading text-[10px] uppercase tracking-[0.3em]">
                             <Flame className="w-3.5 h-3.5" />
-                            <span>spicy</span>
+                            <span className="text-[#858585]">spicy</span>
                           </div>
                         )}
                       </div>
