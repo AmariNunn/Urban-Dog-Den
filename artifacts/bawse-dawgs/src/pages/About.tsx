@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 const MARQUEE_ITEMS = [
-  "Brisket Smoked Sausage",
-  "Just a Good Old Dog",
+  "Good Dawg",
+  "Good Dawg",
 ];
 
 const STATIC_CHIPS = [
@@ -86,21 +86,8 @@ export default function About() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55 }}
-              className="mb-5"
-              style={{ height: "80px", objectFit: "contain" }}
+              style={{ height: "clamp(180px, 40vw, 320px)", objectFit: "contain" }}
             />
-
-            {/* Headline */}
-            <motion.h1
-              initial={{ opacity: 0, y: 28 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display uppercase tracking-tighter leading-[0.88] text-center"
-              style={{ fontSize: "clamp(3.2rem, 11vw, 8.5rem)" }}
-            >
-              <span style={{ color: GOLD }} className="block">GOOD DAWGS.</span>
-              <span style={{ color: GOLD }} className="block">DONE DIFFERENT.</span>
-            </motion.h1>
 
           </div>
         </section>
