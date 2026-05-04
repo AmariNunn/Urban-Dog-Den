@@ -100,7 +100,7 @@ export default function Menu() {
   const { toast } = useToast();
 
   const handleAddToCart = (item: any) => {
-    addItem({ name: item.name, price: item.price, quantity: 1, instructions: "", options: [] });
+    addItem({ menuId: item.id, name: item.name, price: item.price, quantity: 1, instructions: "", options: [] });
     toast({
       title: "Added to Order",
       description: `${item.name} has been added.`,

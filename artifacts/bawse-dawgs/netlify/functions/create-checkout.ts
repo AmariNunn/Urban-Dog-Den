@@ -1,9 +1,9 @@
 import Stripe from "stripe";
 import type { Handler } from "@netlify/functions";
+import { MENU_PRICES } from "./menuPrices";
 
 interface CartItem {
-  name: string;
-  price: number;
+  id: string;
   quantity: number;
   instructions?: string;
   options?: string[];
@@ -42,28 +42,42 @@ const handler: Handler = async (event) => {
 
     const stripe = new Stripe(secretKey);
 
-    const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = items.map((item) => {
+    const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = [];
+
+    for (const item of items) {
+      const menuItem = MENU_PRICES[item.id];
+      if (!menuItem) {
+        return {
+          statusCode: 400,
+          headers,
+          body: JSON.stringify({ error: `Unknown item: ${item.id}` }),
+        };
+      }
+
       const parts: string[] = [];
       if (item.options && item.options.length > 0) parts.push(...item.options);
       if (item.instructions) parts.push(`Note: ${item.instructions}`);
       const description = parts.length > 0 ? parts.join(" · ") : undefined;
 
-      return {
+      lineItems.push({
         price_data: {
           currency: "usd",
           product_data: {
-            name: item.name,
+            name: menuItem.name,
             ...(description ? { description } : {}),
           },
-          unit_amount: Math.round(item.price * 100),
+          unit_amount: Math.round(menuItem.price * 100),
         },
         quantity: item.quantity,
-      };
-    });
+      });
+    }
 
-    const subtotal = items.reduce((sum, i) => sum + i.price * i.quantity, 0);
+    const subtotal = items.reduce((sum, item) => {
+      const menuItem = MENU_PRICES[item.id];
+      return sum + (menuItem ? menuItem.price * item.quantity : 0);
+    }, 0);
+
     const taxAmount = Math.round(subtotal * 0.08 * 100);
-
     lineItems.push({
       price_data: {
         currency: "usd",

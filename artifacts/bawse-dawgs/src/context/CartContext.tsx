@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 
 export interface CartItem {
   id: string;
+  menuId: string;
   name: string;
   price: number;
   quantity: number;
@@ -38,9 +39,9 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const addItem = (item: Omit<CartItem, 'id'>) => {
     setItems(prev => {
-      const existing = prev.find(i => 
-        i.name === item.name && 
-        JSON.stringify(i.options) === JSON.stringify(item.options) && 
+      const existing = prev.find(i =>
+        i.menuId === item.menuId &&
+        JSON.stringify(i.options) === JSON.stringify(item.options) &&
         i.instructions === item.instructions
       );
       if (existing) {
@@ -51,12 +52,12 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   };
 
   const removeItem = (id: string) => setItems(prev => prev.filter(i => i.id !== id));
-  
+
   const updateQuantity = (id: string, quantity: number) => {
     if (quantity <= 0) return removeItem(id);
     setItems(prev => prev.map(i => i.id === id ? { ...i, quantity } : i));
   };
-  
+
   const updateInstructions = (id: string, instructions: string) => {
     setItems(prev => prev.map(i => i.id === id ? { ...i, instructions } : i));
   };

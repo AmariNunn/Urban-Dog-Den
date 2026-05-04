@@ -55,8 +55,7 @@ export default function Order() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           items: items.map((i) => ({
-            name: i.name,
-            price: i.price,
+            id: i.menuId,
             quantity: i.quantity,
             instructions: i.instructions,
             options: i.options,
