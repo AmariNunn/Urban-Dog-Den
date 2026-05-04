@@ -21,9 +21,9 @@ const MENU_DATA = [
     items: [
       { id: "bawse", name: "Bawse Dawg", desc: "Brisket sausage, chopped brisket, chili, slaw, mustard, onions, Bawse Sawce", price: 13, spicy: false, crown: true },
       { id: "dirty", name: "Dirty South Dawg", desc: "Chili, cheese, bacon, Bawse Sawce", price: 12, spicy: false },
-      { id: "nacho", name: "Nacho Dawg", desc: "Chili, cheese, jalapeños", price: 11, spicy: false },
       { id: "elote", name: "Elote Dawg", desc: "Corn, mayo, cotija cheese, tajin, hot sauce, lime", price: 12, spicy: false },
       { id: "nash", name: "Nash Dawg", desc: "Hot oil glaze, pickles, slaw", price: 12, spicy: true },
+      { id: "nacho", name: "Nacho Dawg", desc: "Chili, cheese, jalapeños", price: 11, spicy: false },
     ],
   },
   {
