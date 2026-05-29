@@ -34,7 +34,7 @@ const MENU_DATA = [
       { id: "plain", name: "Plain Jane", desc: "Mustard, ketchup, relish", price: 9, spicy: false },
       { id: "big", name: "Big Dawg", desc: "Chili, onions, mustard, slaw", price: 11, spicy: false },
       { id: "demi", name: "Demi Dawg", desc: "Chili, slaw, relish, mustard, ketchup, onions", price: 11, spicy: false },
-      { id: "walking", name: "Walking Dawg", desc: "Chips, chili, cheese, chopped dawg, sour cream, jalapeños", price: 12, spicy: false },
+      { id: "walking", name: "Walking Dawg", desc: "Chips, chili, cheese, chopped dawg, sour cream, jalapeños", price: 9, spicy: false },
     ],
   },
   {
@@ -81,7 +81,6 @@ const MENU_DATA = [
       { id: "water", name: "Water", desc: "", price: 3, spicy: false },
       { id: "soda", name: "Soda", desc: "", price: 4, spicy: false },
       { id: "lemonade", name: "Lemonade", desc: "", price: 5, spicy: false },
-      { id: "fruit_tea", name: "Fruit Tea", desc: "", price: 5, spicy: false },
     ],
   },
   {

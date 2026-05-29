@@ -10,7 +10,7 @@ const MENU_PRICES: Record<string, { name: string; price: number }> = {
   plain:       { name: "Plain Jane",               price:  9 },
   big:         { name: "Big Dawg",                 price: 11 },
   demi:        { name: "Demi Dawg",                price: 11 },
-  walking:     { name: "Walking Dawg",             price: 12 },
+  walking:     { name: "Walking Dawg",             price:  9 },
   byo:         { name: "Base Dawg",                price: 10 },
   bawse_fries: { name: "Bawse Fries",              price: 10 },
   elote_fries: { name: "Elote Fries",              price:  9 },
@@ -23,7 +23,6 @@ const MENU_PRICES: Record<string, { name: string; price: number }> = {
   water:       { name: "Water",                    price:  3 },
   soda:        { name: "Soda",                     price:  4 },
   lemonade:    { name: "Lemonade",                 price:  5 },
-  fruit_tea:   { name: "Fruit Tea",                price:  5 },
   pie:         { name: "Mini Sweet Potato Pie",    price:  5 },
   brownie:     { name: "Brownie",                  price:  5 },
 };
